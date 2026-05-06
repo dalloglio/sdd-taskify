@@ -1,50 +1,58 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: UNSPECIFIED → 1.0.0
+- Modified principles: none (initial definition)
+- Added sections: Additional Constraints, Development Workflow
+- Removed sections: none
+- Templates requiring updates: .specify/templates/plan-template.md ✅ reviewed, .specify/templates/spec-template.md ✅ reviewed, .specify/templates/tasks-template.md ✅ reviewed, .specify/templates/constitution-template.md ✅ replaced
+- Follow-up TODOs: none
+-->
+
+# Taskify Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Security-First Architecture
+Every design decision MUST prioritize security. Every service boundary is a security boundary and MUST enforce least privilege, secure defaults, encryption, secrets protection, and explicit failure handling.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Microservices Contract Discipline
+Taskify is a microservices architecture. Every service MUST own its data, publish an explicit contract, version its public API deliberately, and enforce boundary validation. Cross-service interaction MUST be resilient, idempotent, observable, and tolerate partial failure.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Input Validation Discipline
+All user inputs and inter-service inputs MUST be validated, normalized, and sanitized at the first boundary. Invalid or malformed data MUST be rejected explicitly, logged, and never allowed to propagate silently.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Documentation as Code
+All code MUST be fully documented. Service APIs, data models, expected behaviors, failure modes, and operational requirements MUST be captured in source-aligned documentation and kept current with implementation.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Observability and Measurable Resilience
+Every service MUST emit structured logs, meaningful metrics, and clear error signals. Monitoring, alerting, and diagnostics MUST be designed before implementation. Failure cases MUST be recoverable or safely degraded and documented.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Additional Constraints
+- All user inputs MUST be validated and sanitized before use.
+- Security reviews MUST accompany changes to service boundaries, authentication, validation, or data flow.
+- Service contracts MUST include request/response schemas, version policy, and known failure semantics.
+- Data ownership MUST be declared per service; shared mutable state across services is prohibited.
+- High-risk features MUST include a minimal threat model and validation checklist before implementation.
+- Documentation MUST include API examples, edge cases, and operational runbooks for production behavior.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+- Every feature MUST start with a spec, plan, and task breakdown aligned to independent user stories.
+- Every PR MUST include tests, documentation updates, and explicit validation of edge cases.
+- Code review MUST verify security controls, input validation, contract compatibility, observability, and documentation.
+- Changes that affect two or more services MUST be reviewed as a cross-service architecture change.
+- Technical debt or deviations from the constitution MUST be documented, justified, and time-boxed.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes informal habits and local conventions for Taskify. Amendments require documented rationale, approval from the architecture/security steward, and a migration or compatibility plan for affected services.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Versioning policy:
+- MAJOR version bumps when principles or governance change in incompatible ways.
+- MINOR version bumps when new principles or mandatory sections are added.
+- PATCH version bumps for wording clarifications, editorial fixes, and non-semantic refinements.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Compliance expectations:
+- All PRs MUST state which constitution principles apply.
+- Security and architecture reviews are required before merging changes that affect service boundaries or validation.
+- Documentation, tests, and contract validation MUST accompany every release-impacting change.
+
+**Version**: 1.0.0 | **Ratified**: 2026-05-05 | **Last Amended**: 2026-05-05

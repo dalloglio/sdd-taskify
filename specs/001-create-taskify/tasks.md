@@ -20,17 +20,17 @@
 **Purpose**: Project initialization and workspace structure  
 **Duration**: ~30 minutes
 
-- [ ] T001 Create backend directory structure per plan.md: `backend/src/{models,services,controllers,middleware,routes,db,realtime,config}, backend/tests/{unit,integration,fixtures}`
-- [ ] T002 Create frontend directory structure per plan.md: `frontend/src/{components,pages,hooks,services,context,types,utils,styles}, frontend/tests/{unit,integration,fixtures}, frontend/public`
-- [ ] T003 [P] Initialize backend package.json with Node.js 20.x, TypeScript 5.x, Express, Prisma, Socket.IO, Jest, and dev dependencies: `backend/package.json`
-- [ ] T004 [P] Initialize frontend package.json with React 18.x, TypeScript 5.x, Vite, React Query, Zustand, Socket.IO client, dnd-kit, Tailwind CSS, Vitest, Playwright: `frontend/package.json`
-- [ ] T005 [P] Create backend tsconfig.json with strict mode enabled: `backend/tsconfig.json`
-- [ ] T006 [P] Create frontend tsconfig.json with JSX support: `frontend/tsconfig.json`
-- [ ] T007 [P] Create backend .env.example with DATABASE_URL, NODE_ENV, PORT, CORS_ORIGIN: `backend/.env.example`
-- [ ] T008 [P] Create frontend .env.example with VITE_API_BASE_URL, VITE_WEBSOCKET_URL: `frontend/.env.example`
-- [ ] T009 [P] Create ESLint and Prettier configs for both backend and frontend: `backend/.eslintrc.json, backend/.prettierrc, frontend/.eslintrc.json, frontend/.prettierrc`
-- [ ] T010 [P] Create backend README with setup instructions: `backend/README.md`
-- [ ] T011 [P] Create frontend README with setup instructions: `frontend/README.md`
+- [x] T001 Create backend directory structure per plan.md: `backend/src/{models,services,controllers,middleware,routes,db,realtime,config}, backend/tests/{unit,integration,fixtures}`
+- [x] T002 Create frontend directory structure per plan.md: `frontend/src/{components,pages,hooks,services,context,types,utils,styles}, frontend/tests/{unit,integration,fixtures}, frontend/public`
+- [x] T003 [P] Initialize backend package.json with Node.js 20.x, TypeScript 5.x, Express, Prisma, Socket.IO, Jest, and dev dependencies: `backend/package.json`
+- [x] T004 [P] Initialize frontend package.json with React 18.x, TypeScript 5.x, Vite, React Query, Zustand, Socket.IO client, dnd-kit, Tailwind CSS, Vitest, Playwright: `frontend/package.json`
+- [x] T005 [P] Create backend tsconfig.json with strict mode enabled: `backend/tsconfig.json`
+- [x] T006 [P] Create frontend tsconfig.json with JSX support: `frontend/tsconfig.json`
+- [x] T007 [P] Create backend .env.example with DATABASE_URL, NODE_ENV, PORT, CORS_ORIGIN: `backend/.env.example`
+- [x] T008 [P] Create frontend .env.example with VITE_API_BASE_URL, VITE_WEBSOCKET_URL: `frontend/.env.example`
+- [x] T009 [P] Create ESLint and Prettier configs for both backend and frontend: `backend/.eslintrc.json, backend/.prettierrc, frontend/.eslintrc.json, frontend/.prettierrc`
+- [x] T010 [P] Create backend README with setup instructions: `backend/README.md`
+- [x] T011 [P] Create frontend README with setup instructions: `frontend/README.md`
 
 **Checkpoint**: Project scaffolding complete - ready to install dependencies
 

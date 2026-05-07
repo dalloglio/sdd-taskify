@@ -44,11 +44,11 @@
 
 ### Database & ORM Setup
 
-- [ ] T012 [P] Initialize Prisma and create prisma/schema.prisma with User, Project, Task, Comment, ProjectMember models per data-model.md: `backend/prisma/schema.prisma`
-- [ ] T013 Create initial Prisma migration: `npx prisma migrate dev --name init` → generates `backend/prisma/migrations/[timestamp]_init/migration.sql`
-- [ ] T014 [P] Create Prisma seed script to populate 5 predefined users (Alice Chen, Bob Smith, Carol Johnson, Dave Wilson, Emma Lee): `backend/prisma/seed.ts`
-- [ ] T015 [P] Create Prisma seed script to populate 3 sample projects (Website Redesign, Mobile App v2, API Refactor) with team members: `backend/prisma/seed.ts` (append to T014)
-- [ ] T016 Run Prisma seed to populate sample data: `npx prisma db seed`
+- [x] T012 [P] Initialize Prisma and create prisma/schema.prisma with User, Project, Task, Comment, ProjectMember models per data-model.md: `backend/prisma/schema.prisma`
+- [x] T013 Create initial Prisma migration: `npx prisma migrate dev --name init` → generates `backend/prisma/migrations/[timestamp]_init/migration.sql`
+- [x] T014 [x] Create Prisma seed script to populate 5 predefined users (Alice Chen, Bob Smith, Carol Johnson, Dave Wilson, Emma Lee): `backend/prisma/seed.ts`
+- [x] T015 [x] Create Prisma seed script to populate 3 sample projects (Website Redesign, Mobile App v2, API Refactor) with team members: `backend/prisma/seed.ts` (append to T014)
+- [x] T016 Run Prisma seed to populate sample data: `npx prisma db seed`
 
 ### Backend API Infrastructure
 

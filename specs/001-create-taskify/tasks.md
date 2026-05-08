@@ -52,25 +52,25 @@
 
 ### Backend API Infrastructure
 
-- [ ] T017 [P] Create Express app initialization with CORS, JSON middleware: `backend/src/index.ts`
-- [ ] T018 [P] Create database connection utility: `backend/src/db/client.ts`
-- [ ] T019 [P] Create global error handling middleware: `backend/src/middleware/errorHandler.ts`
-- [ ] T020 [P] Create request logging middleware: `backend/src/middleware/logging.ts`
-- [ ] T021 [P] Create input validation middleware/helpers: `backend/src/middleware/validation.ts`
-- [ ] T022 [P] Create environment configuration management: `backend/src/config/env.ts`
-- [ ] T023 [P] Create API response formatter utility: `backend/src/utils/response.ts`
-- [ ] T024 [P] Create TypeScript types for API requests/responses: `backend/src/types/api.ts`
-- [ ] T025 Create health check endpoint GET /health: `backend/src/routes/health.ts` and register in index.ts
-- [ ] T026 [P] Create request/response interfaces for Projects API: `backend/src/types/projects.ts`
-- [ ] T027 [P] Create request/response interfaces for Tasks API: `backend/src/types/tasks.ts`
-- [ ] T028 [P] Create request/response interfaces for Comments API: `backend/src/types/comments.ts`
+- [x] T017 [P] Create Express app initialization with CORS, JSON middleware: `backend/src/index.ts`
+- [x] T018 [P] Create database connection utility: `backend/src/db/client.ts`
+- [x] T019 [P] Create global error handling middleware: `backend/src/middleware/errorHandler.ts`
+- [x] T020 [P] Create request logging middleware: `backend/src/middleware/logging.ts`
+- [x] T021 [P] Create input validation middleware/helpers: `backend/src/middleware/validation.ts`
+- [x] T022 [P] Create environment configuration management: `backend/src/config/env.ts`
+- [x] T023 [P] Create API response formatter utility: `backend/src/utils/response.ts`
+- [x] T024 [P] Create TypeScript types for API requests/responses: `backend/src/types/api.ts`
+- [x] T025 Create health check endpoint GET /health: `backend/src/routes/health.ts` and register in index.ts
+- [x] T026 [P] Create request/response interfaces for Projects API: `backend/src/types/projects.ts`
+- [x] T027 [P] Create request/response interfaces for Tasks API: `backend/src/types/tasks.ts`
+- [x] T028 [P] Create request/response interfaces for Comments API: `backend/src/types/comments.ts`
 
 ### Socket.IO Real-Time Infrastructure
 
-- [ ] T029 [P] Integrate Socket.IO server into Express app: `backend/src/realtime/socket-server.ts`
-- [ ] T030 [P] Create Socket.IO middleware for project membership validation: `backend/src/realtime/middleware.ts`
-- [ ] T031 [P] Create Socket.IO event types and interfaces: `backend/src/types/socket.ts`
-- [ ] T032 Create Socket.IO connection handler with room management: `backend/src/realtime/handlers.ts`
+- [x] T029 [P] Integrate Socket.IO server into Express app: `backend/src/realtime/socket-server.ts`
+- [x] T030 [P] Create Socket.IO middleware for project membership validation: `backend/src/realtime/middleware.ts`
+- [x] T031 [P] Create Socket.IO event types and interfaces: `backend/src/types/socket.ts`
+- [x] T032 Create Socket.IO connection handler with room management: `backend/src/realtime/handlers.ts`
 
 ### Frontend API Infrastructure
 

@@ -74,14 +74,14 @@
 
 ### Frontend API Infrastructure
 
-- [ ] T033 [P] Create API client configuration with axios/fetch: `frontend/src/services/api.ts`
-- [ ] T034 [P] Create React Query configuration: `frontend/src/config/queryClient.ts`
-- [ ] T035 [P] Create Zustand store for current user selection: `frontend/src/context/userStore.ts`
-- [ ] T036 [P] Create Zustand store for UI state (modals, filters): `frontend/src/context/uiStore.ts`
-- [ ] T037 [P] Create Socket.IO client configuration: `frontend/src/services/socket.ts`
-- [ ] T038 [P] Create custom hook for using Socket.IO: `frontend/src/hooks/useSocket.ts`
-- [ ] T039 [P] Create TypeScript interfaces for API models: `frontend/src/types/models.ts`
-- [ ] T040 [P] Create TypeScript interfaces for API responses: `frontend/src/types/api.ts`
+- [x] T033 [P] Create API client configuration with axios/fetch: `frontend/src/services/api.ts`
+- [x] T034 [P] Create React Query configuration: `frontend/src/config/queryClient.ts`
+- [x] T035 [P] Create Zustand store for current user selection: `frontend/src/context/userStore.ts`
+- [x] T036 [P] Create Zustand store for UI state (modals, filters): `frontend/src/context/uiStore.ts`
+- [x] T037 [P] Create Socket.IO client configuration: `frontend/src/services/socket.ts`
+- [x] T038 [P] Create custom hook for using Socket.IO: `frontend/src/hooks/useSocket.ts`
+- [x] T039 [P] Create TypeScript interfaces for API models: `frontend/src/types/models.ts`
+- [x] T040 [P] Create TypeScript interfaces for API responses: `frontend/src/types/api.ts`
 
 ### Frontend Styling Setup
 

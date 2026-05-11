@@ -85,28 +85,28 @@
 
 ### Frontend Styling Setup
 
-- [ ] T041 [P] Configure Tailwind CSS in frontend: `frontend/tailwind.config.js, frontend/postcss.config.js`
-- [ ] T042 [P] Create global styles and CSS variables: `frontend/src/styles/globals.css`
-- [ ] T043 [P] Create reusable component utility classes: `frontend/src/styles/components.css`
+- [x] T041 [P] Configure Tailwind CSS in frontend: `frontend/tailwind.config.js, frontend/postcss.config.js`
+- [x] T042 [P] Create global styles and CSS variables: `frontend/src/styles/globals.css`
+- [x] T043 [P] Create reusable component utility classes: `frontend/src/styles/components.css`
 
 ### Frontend Component Infrastructure
 
-- [ ] T044 [P] Create root App component with routing setup: `frontend/src/App.tsx`
-- [ ] T045 [P] Create layout wrapper component: `frontend/src/components/Layout.tsx`
-- [ ] T046 [P] Create common Button component: `frontend/src/components/Button.tsx`
-- [ ] T047 [P] Create common Input component: `frontend/src/components/Input.tsx`
-- [ ] T048 [P] Create common Modal component: `frontend/src/components/Modal.tsx`
-- [ ] T049 [P] Create error boundary component: `frontend/src/components/ErrorBoundary.tsx`
-- [ ] T050 [P] Create loading skeleton/spinner component: `frontend/src/components/Loading.tsx`
+- [x] T044 [P] Create root App component with routing setup: `frontend/src/App.tsx`
+- [x] T045 [P] Create layout wrapper component: `frontend/src/components/Layout.tsx`
+- [x] T046 [P] Create common Button component: `frontend/src/components/Button.tsx`
+- [x] T047 [P] Create common Input component: `frontend/src/components/Input.tsx`
+- [x] T048 [P] Create common Modal component: `frontend/src/components/Modal.tsx`
+- [x] T049 [P] Create error boundary component: `frontend/src/components/ErrorBoundary.tsx`
+- [x] T050 [P] Create loading skeleton/spinner component: `frontend/src/components/Loading.tsx`
 
 ### Testing Infrastructure
 
-- [ ] T051 [P] Configure Jest for backend with TypeScript support: `backend/jest.config.js`
-- [ ] T052 [P] Configure Vitest for frontend: `frontend/vitest.config.ts`
-- [ ] T053 [P] Configure Playwright for E2E testing: `playwright.config.ts` at root
-- [ ] T054 [P] Create test fixtures for sample users: `backend/tests/fixtures/users.ts`
-- [ ] T055 [P] Create test fixtures for sample projects: `backend/tests/fixtures/projects.ts`
-- [ ] T056 [P] Create test utilities and helpers: `backend/tests/utils.ts, frontend/tests/utils.ts`
+- [x] T051 [P] Configure Jest for backend with TypeScript support: `backend/jest.config.js`
+- [x] T052 [P] Configure Vitest for frontend: `frontend/vitest.config.ts`
+- [x] T053 [P] Configure Playwright for E2E testing: `playwright.config.ts` at root
+- [x] T054 [P] Create test fixtures for sample users: `backend/tests/fixtures/users.ts`
+- [x] T055 [P] Create test fixtures for sample projects: `backend/tests/fixtures/projects.ts`
+- [x] T056 [P] Create test utilities and helpers: `backend/tests/utils.ts, frontend/tests/utils.ts`
 
 **Checkpoint**: All infrastructure is in place - ready to implement user stories
 

@@ -1,0 +1,12 @@
+/* Utility classes for reusable components */
+.btn-primary {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600;
+}
+
+.card {
+  @apply bg-slate-800 rounded-lg p-4 shadow-md;
+}
+
+.input {
+  @apply bg-slate-900 text-white border border-slate-700 rounded-md px-3 py-2;
+}

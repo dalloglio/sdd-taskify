@@ -1,9 +1,9 @@
-import { Router } from 'express'
+import { Router } from 'express';
 
-const router = Router()
+const router = Router();
 
 router.get('/', (_req, res) => {
-  res.json({ status: 'ok', uptime: process.uptime(), timestamp: Date.now() })
-})
+  res.json({ status: 'ok', uptime: process.uptime(), timestamp: Date.now() });
+});
 
-export default router
+export default router;

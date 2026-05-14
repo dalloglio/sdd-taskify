@@ -1,5 +1,5 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 export function loadEnv() {
-  dotenv.config()
+  dotenv.config();
 }

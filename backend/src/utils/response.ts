@@ -1,9 +1,9 @@
-import { Response } from 'express'
+import { Response } from 'express';
 
 export function ok<T>(res: Response, data: T) {
-  return res.json({ success: true, data })
+  return res.json({ success: true, data });
 }
 
 export function fail(res: Response, message: string, status = 400) {
-  return res.status(status).json({ success: false, error: message })
+  return res.status(status).json({ success: false, error: message });
 }

@@ -1,18 +1,24 @@
-export default function App(): JSX.Element {
-  return (
-    <div className="app-container">
-      <h1 className="text-2xl font-semibold">Taskify — Frontend placeholder</h1>
-      <p className="text-sm text-muted-foreground">
-        Routing and pages will be added here.
-      </p>
-    </div>
-  );
-}
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import ProjectDetails from './pages/ProjectDetails';
+import ProjectList from './pages/ProjectList';
+import UserSelector from './pages/UserSelector';
+
 export default function App() {
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', padding: 24 }}>
-      <h1>Taskify</h1>
-      <p>Frontend scaffold — services and hooks are available.</p>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <nav className="flex gap-4 mb-4 text-sm">
+          <Link to="/user-select">Select User</Link>
+          <Link to="/projects">Projects</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Navigate to="/projects" replace />} />
+          <Route path="/user-select" element={<UserSelector />} />
+          <Route path="/projects" element={<ProjectList />} />
+          <Route path="/projects/:projectId" element={<ProjectDetails />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }

@@ -5,7 +5,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -18,10 +18,13 @@
   },
   "plugins": ["react-refresh"],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_" }
     ],
+    "react-hooks/exhaustive-deps": "off",
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }

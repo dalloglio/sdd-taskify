@@ -12,7 +12,7 @@ export default class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, info: any) {
+  componentDidCatch(_error: unknown, _info: unknown) {
     // TODO: send to logging service
     // console.error(error, info)
   }

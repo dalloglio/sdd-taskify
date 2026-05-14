@@ -22,7 +22,43 @@ export function useCreateProject() {
       return res.data.data;
     },
     {
-      onSuccess: () => qc.invalidateQueries(['projects']),
+      onMutate: async (newProject) => {
+        await qc.cancelQueries(['projects']);
+        const prev = qc.getQueryData<Project[]>(['projects']);
+        const optimistic: Project = {
+          id: `optimistic-${Date.now()}`,
+          name: newProject.name,
+          description: newProject.description,
+          members: [],
+          createdAt: new Date().toISOString(),
+        } as Project;
+        if (prev)
+          qc.setQueryData<Project[]>(['projects'], [optimistic, ...prev]);
+        return { prev };
+      },
+      onError: (_err, _vars, ctx) => {
+        if (ctx?.prev) qc.setQueryData(['projects'], ctx.prev);
+      },
+      onSettled: () => qc.invalidateQueries(['projects']),
+    }
+  );
+}
+
+export function useAddProjectMember(projectId: string) {
+  const qc = useQueryClient();
+  return useMutation(
+    async (payload: { userId: string }) => {
+      const res = await api.post<ApiResponse<any>>(
+        `/projects/${projectId}/members`,
+        payload
+      );
+      return res.data.data;
+    },
+    {
+      onSuccess: () => {
+        qc.invalidateQueries(['projects']);
+        qc.invalidateQueries(['project', projectId]);
+      },
     }
   );
 }

@@ -127,45 +127,45 @@
 
 #### Projects Service & Database
 
-- [ ] T057 [P] [US1] Create Project service layer: `backend/src/services/projectService.ts` with methods: createProject, getProject, getAllProjects, addProjectMember, getProjectMembers
-- [ ] T058 [P] [US1] Create User service layer: `backend/src/services/userService.ts` with methods: getAllUsers, getUserById, getUsersByIds
-- [ ] T059 [US1] Implement POST /api/v1/projects (create project) in controller and route: `backend/src/controllers/projectController.ts, backend/src/routes/projects.ts`
-- [ ] T060 [US1] Implement POST /api/v1/projects/:projectId/members (add team member) in controller: `backend/src/controllers/projectController.ts`
-- [ ] T061 [US1] Implement GET /api/v1/projects (list all projects) in controller: `backend/src/controllers/projectController.ts`
-- [ ] T062 [US1] Implement GET /api/v1/projects/:projectId (get project details with members) in controller: `backend/src/controllers/projectController.ts`
-- [ ] T063 [P] [US1] Implement GET /api/v1/users (list all predefined users) in controller and route: `backend/src/controllers/userController.ts, backend/src/routes/users.ts`
-- [ ] T064 [US1] Register project and user routes in Express app: `backend/src/index.ts`
-- [ ] T065 [US1] Add input validation for project creation (name required, team members array): `backend/src/middleware/validation.ts`
-- [ ] T066 [US1] Add error handling for duplicate project names and invalid member assignments: `backend/src/services/projectService.ts`
+- [x] T057 [P] [US1] Create Project service layer: `backend/src/services/projectService.ts` with methods: createProject, getProject, getAllProjects, addProjectMember, getProjectMembers
+- [x] T058 [P] [US1] Create User service layer: `backend/src/services/userService.ts` with methods: getAllUsers, getUserById, getUsersByIds
+- [x] T059 [US1] Implement POST /api/v1/projects (create project) in controller and route: `backend/src/controllers/projectController.ts, backend/src/routes/projects.ts`
+- [x] T060 [US1] Implement POST /api/v1/projects/:projectId/members (add team member) in controller: `backend/src/controllers/projectController.ts`
+- [x] T061 [US1] Implement GET /api/v1/projects (list all projects) in controller: `backend/src/controllers/projectController.ts`
+- [x] T062 [US1] Implement GET /api/v1/projects/:projectId (get project details with members) in controller: `backend/src/controllers/projectController.ts`
+- [x] T063 [P] [US1] Implement GET /api/v1/users (list all predefined users) in controller and route: `backend/src/controllers/userController.ts, backend/src/routes/users.ts`
+- [x] T064 [US1] Register project and user routes in Express app: `backend/src/index.ts`
+- [x] T065 [US1] Add input validation for project creation (name required, team members array): `backend/src/middleware/validation.ts`
+- [x] T066 [US1] Add error handling for duplicate project names and invalid member assignments: `backend/src/services/projectService.ts`
 
 ### Frontend Components for User Story 1
 
 #### User Selection Screen
 
-- [ ] T067 [P] [US1] Create UserSelector component for initial user selection: `frontend/src/pages/UserSelector.tsx` displays 5 users with selection, stores in Zustand
-- [ ] T068 [P] [US1] Create UserAvatar component for displaying user profile pictures: `frontend/src/components/UserAvatar.tsx`
+- [x] T067 [P] [US1] Create UserSelector component for initial user selection: `frontend/src/pages/UserSelector.tsx` displays 5 users with selection, stores in Zustand
+- [x] T068 [P] [US1] Create UserAvatar component for displaying user profile pictures: `frontend/src/components/UserAvatar.tsx`
 
 #### Project List & Management
 
-- [ ] T069 [US1] Create ProjectList page component: `frontend/src/pages/ProjectList.tsx` displays all projects with "Create Project" button
-- [ ] T070 [P] [US1] Create ProjectCard component: `frontend/src/components/ProjectCard.tsx` shows project name, member count, creation date
-- [ ] T071 [P] [US1] Create ProjectForm component for creating/editing projects: `frontend/src/components/ProjectForm.tsx` with name input, member selection checkboxes
-- [ ] T072 [P] [US1] Create TeamMemberSelector component: `frontend/src/components/TeamMemberSelector.tsx` displays available users with checkboxes
-- [ ] T073 [US1] Create ProjectDetails page: `frontend/src/pages/ProjectDetails.tsx` shows project info and team members, switch to Kanban board
-- [ ] T074 [P] [US1] Create ProjectHeader component: `frontend/src/components/ProjectHeader.tsx` shows project name and team members
-- [ ] T075 [P] [US1] Create TeamMemberList component: `frontend/src/components/TeamMemberList.tsx` displays project members with roles
+- [x] T069 [US1] Create ProjectList page component: `frontend/src/pages/ProjectList.tsx` displays all projects with "Create Project" button
+- [x] T070 [P] [US1] Create ProjectCard component: `frontend/src/components/ProjectCard.tsx` shows project name, member count, creation date
+- [x] T071 [P] [US1] Create ProjectForm component for creating/editing projects: `frontend/src/components/ProjectForm.tsx` with name input, member selection checkboxes
+- [x] T072 [P] [US1] Create TeamMemberSelector component: `frontend/src/components/TeamMemberSelector.tsx` displays available users with checkboxes
+- [x] T073 [US1] Create ProjectDetails page: `frontend/src/pages/ProjectDetails.tsx` shows project info and team members, switch to Kanban board
+- [x] T074 [P] [US1] Create ProjectHeader component: `frontend/src/components/ProjectHeader.tsx` shows project name and team members
+- [x] T075 [P] [US1] Create TeamMemberList component: `frontend/src/components/TeamMemberList.tsx` displays project members with roles
 
 #### React Query Integration for User Story 1
 
-- [ ] T076 [P] [US1] Create React Query hooks for projects: `frontend/src/hooks/useProjects.ts` with useGetProjects, useCreateProject, useAddProjectMember
-- [ ] T077 [P] [US1] Create React Query hooks for users: `frontend/src/hooks/useUsers.ts` with useGetUsers
-- [ ] T078 [P] [US1] Implement optimistic updates for project creation in React Query: `frontend/src/hooks/useProjects.ts`
+- [x] T076 [P] [US1] Create React Query hooks for projects: `frontend/src/hooks/useProjects.ts` with useGetProjects, useCreateProject, useAddProjectMember
+- [x] T077 [P] [US1] Create React Query hooks for users: `frontend/src/hooks/useUsers.ts` with useGetUsers
+- [x] T078 [P] [US1] Implement optimistic updates for project creation in React Query: `frontend/src/hooks/useProjects.ts`
 
 #### Routing & Navigation for User Story 1
 
-- [ ] T079 [US1] Create routing structure: `frontend/src/App.tsx` with routes: /, /user-select, /projects, /projects/:projectId
-- [ ] T080 [P] [US1] Create Navigation component: `frontend/src/components/Navigation.tsx` for project navigation
-- [ ] T081 [P] [US1] Create Breadcrumb component: `frontend/src/components/Breadcrumb.tsx` for navigation context
+- [x] T079 [US1] Create routing structure: `frontend/src/App.tsx` with routes: /, /user-select, /projects, /projects/:projectId
+- [x] T080 [P] [US1] Create Navigation component: `frontend/src/components/Navigation.tsx` for project navigation
+- [x] T081 [P] [US1] Create Breadcrumb component: `frontend/src/components/Breadcrumb.tsx` for navigation context
 
 ### Integration Tests for User Story 1
 

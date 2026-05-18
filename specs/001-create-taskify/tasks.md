@@ -169,10 +169,10 @@
 
 ### Integration Tests for User Story 1
 
-- [ ] T082 [P] [US1] Integration test for project creation workflow: `backend/tests/integration/projects.test.ts` - POST /api/v1/projects with valid data
-- [ ] T083 [P] [US1] Integration test for adding team members: `backend/tests/integration/projects.test.ts` - POST /api/v1/projects/:projectId/members
-- [ ] T084 [P] [US1] Integration test for listing projects: `backend/tests/integration/projects.test.ts` - GET /api/v1/projects
-- [ ] T085 [P] [US1] Unit test for ProjectService: `backend/tests/unit/services/projectService.test.ts`
+- [x] T082 [P] [US1] Integration test for project creation workflow: `backend/tests/integration/projects.test.ts` - POST /api/v1/projects with valid data
+- [x] T083 [P] [US1] Integration test for adding team members: `backend/tests/integration/projects.test.ts` - POST /api/v1/projects/:projectId/members
+- [x] T084 [P] [US1] Integration test for listing projects: `backend/tests/integration/projects.test.ts` - GET /api/v1/projects
+- [x] T085 [P] [US1] Unit test for ProjectService: `backend/tests/unit/services/projectService.test.ts`
 - [ ] T086 [P] [US1] Frontend integration test: user selection → project list → create project flow: `frontend/tests/integration/projectWorkflow.test.ts`
 - [ ] T087 [P] [US1] Component tests for ProjectForm and ProjectCard: `frontend/tests/unit/components/ProjectForm.test.tsx`
 

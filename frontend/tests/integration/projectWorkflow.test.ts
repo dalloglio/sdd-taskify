@@ -62,7 +62,7 @@ describe('project workflow', () => {
 
     expect(useUserStore.getState().currentUser?.id).toBe('user-1');
     expect(await screen.findByRole('heading', { name: /projects/i })).toBeInTheDocument();
-    expect(screen.getByText('Website Redesign')).toBeInTheDocument();
+    expect(await screen.findByText('Website Redesign')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /create project/i }));
     await user.type(screen.getByLabelText(/name/i), 'Launch Plan');

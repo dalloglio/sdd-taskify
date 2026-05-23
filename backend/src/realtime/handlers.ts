@@ -4,6 +4,7 @@ import { getIo } from './socket-server';
 type TaskEventPayload = {
   projectId?: string;
   taskId?: string;
+  commentId?: string;
   [key: string]: unknown;
 };
 
@@ -48,6 +49,18 @@ export function emitTaskDeleted(projectId: string, payload: unknown) {
   emitFromApi('task:deleted', projectId, payload);
 }
 
+export function emitCommentAdded(projectId: string, payload: unknown) {
+  emitFromApi('comment:added', projectId, payload);
+}
+
+export function emitCommentUpdated(projectId: string, payload: unknown) {
+  emitFromApi('comment:updated', projectId, payload);
+}
+
+export function emitCommentDeleted(projectId: string, payload: unknown) {
+  emitFromApi('comment:deleted', projectId, payload);
+}
+
 export function registerRealtimeHandlers(socket: Socket) {
   socket.on('task:create', (payload) => {
     if (!isTaskEventPayload(payload)) {
@@ -79,5 +92,29 @@ export function registerRealtimeHandlers(socket: Socket) {
       return;
     }
     socket.to(projectRoom(payload.projectId)).emit('task:deleted', payload);
+  });
+
+  socket.on('comment:create', (payload) => {
+    if (!isTaskEventPayload(payload)) {
+      socket.emit('comment:error', { error: 'projectId is required' });
+      return;
+    }
+    socket.to(projectRoom(payload.projectId)).emit('comment:added', payload);
+  });
+
+  socket.on('comment:update', (payload) => {
+    if (!isTaskEventPayload(payload)) {
+      socket.emit('comment:error', { error: 'projectId is required' });
+      return;
+    }
+    socket.to(projectRoom(payload.projectId)).emit('comment:updated', payload);
+  });
+
+  socket.on('comment:delete', (payload) => {
+    if (!isTaskEventPayload(payload)) {
+      socket.emit('comment:error', { error: 'projectId is required' });
+      return;
+    }
+    socket.to(projectRoom(payload.projectId)).emit('comment:deleted', payload);
   });
 }

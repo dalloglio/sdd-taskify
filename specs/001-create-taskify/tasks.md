@@ -286,56 +286,56 @@
 
 #### Comments Service & Database
 
-- [ ] T136 [P] [US3] Create Comment service layer: `backend/src/services/commentService.ts` with methods: createComment, getCommentsByTask, updateComment, deleteComment
-- [ ] T137 [US3] Implement POST /api/v1/tasks/:taskId/comments (create comment) in controller and route: `backend/src/controllers/commentController.ts, backend/src/routes/comments.ts`
-- [ ] T138 [US3] Implement GET /api/v1/tasks/:taskId/comments (list comments) in controller: `backend/src/controllers/commentController.ts`
-- [ ] T139 [US3] Implement PATCH /api/v1/comments/:commentId (update comment - author only) in controller: `backend/src/controllers/commentController.ts`
-- [ ] T140 [US3] Implement DELETE /api/v1/comments/:commentId (delete comment - author only) in controller: `backend/src/controllers/commentController.ts`
-- [ ] T141 [US3] Register comments routes in Express app: `backend/src/index.ts`
-- [ ] T142 [US3] Add validation for comment creation (text required, non-empty): `backend/src/middleware/validation.ts`
-- [ ] T143 [US3] Add authorization check (only author can edit/delete own comments): `backend/src/middleware/authorization.ts`
-- [ ] T144 [US3] Add error handling for invalid tasks and authorization failures: `backend/src/services/commentService.ts`
+- [x] T136 [P] [US3] Create Comment service layer: `backend/src/services/commentService.ts` with methods: createComment, getCommentsByTask, updateComment, deleteComment
+- [x] T137 [US3] Implement POST /api/v1/tasks/:taskId/comments (create comment) in controller and route: `backend/src/controllers/commentController.ts, backend/src/routes/comments.ts`
+- [x] T138 [US3] Implement GET /api/v1/tasks/:taskId/comments (list comments) in controller: `backend/src/controllers/commentController.ts`
+- [x] T139 [US3] Implement PATCH /api/v1/comments/:commentId (update comment - author only) in controller: `backend/src/controllers/commentController.ts`
+- [x] T140 [US3] Implement DELETE /api/v1/comments/:commentId (delete comment - author only) in controller: `backend/src/controllers/commentController.ts`
+- [x] T141 [US3] Register comments routes in Express app: `backend/src/index.ts`
+- [x] T142 [US3] Add validation for comment creation (text required, non-empty): `backend/src/middleware/validation.ts`
+- [x] T143 [US3] Add authorization check (only author can edit/delete own comments): `backend/src/middleware/authorization.ts`
+- [x] T144 [US3] Add error handling for invalid tasks and authorization failures: `backend/src/services/commentService.ts`
 
 #### Socket.IO Real-Time Events for User Story 3
 
-- [ ] T145 [P] [US3] Create Socket.IO event handlers for comment operations: `backend/src/realtime/handlers.ts` - comment:create, comment:update, comment:delete
-- [ ] T146 [US3] Implement Socket.IO emit for comment creation to project room: `backend/src/realtime/handlers.ts` and commentController - emit to `project-${projectId}`
-- [ ] T147 [US3] Implement Socket.IO emit for comment updates to project room: `backend/src/realtime/handlers.ts` and commentController
-- [ ] T148 [US3] Implement Socket.IO emit for comment deletion to project room: `backend/src/realtime/handlers.ts` and commentController
+- [x] T145 [P] [US3] Create Socket.IO event handlers for comment operations: `backend/src/realtime/handlers.ts` - comment:create, comment:update, comment:delete
+- [x] T146 [US3] Implement Socket.IO emit for comment creation to project room: `backend/src/realtime/handlers.ts` and commentController - emit to `project-${projectId}`
+- [x] T147 [US3] Implement Socket.IO emit for comment updates to project room: `backend/src/realtime/handlers.ts` and commentController
+- [x] T148 [US3] Implement Socket.IO emit for comment deletion to project room: `backend/src/realtime/handlers.ts` and commentController
 
 ### Frontend Components for User Story 3
 
 #### Comments Display & Interaction
 
-- [ ] T149 [P] [US3] Create CommentsList component: `frontend/src/components/CommentsList.tsx` displays all comments with author, timestamp
-- [ ] T150 [P] [US3] Create CommentItem component: `frontend/src/components/CommentItem.tsx` shows comment with edit/delete buttons (if author)
-- [ ] T151 [P] [US3] Create CommentForm component: `frontend/src/components/CommentForm.tsx` for adding new comments
-- [ ] T152 [P] [US3] Create EditCommentForm component: `frontend/src/components/EditCommentForm.tsx` for editing existing comments
-- [ ] T153 [P] [US3] Create DeleteCommentConfirmation modal: `frontend/src/components/DeleteConfirmation.tsx` (extend from T127)
-- [ ] T154 [US3] Integrate CommentsList into TaskDetailsModal: `frontend/src/components/TaskDetailsModal.tsx`
+- [x] T149 [P] [US3] Create CommentsList component: `frontend/src/components/CommentsList.tsx` displays all comments with author, timestamp
+- [x] T150 [P] [US3] Create CommentItem component: `frontend/src/components/CommentItem.tsx` shows comment with edit/delete buttons (if author)
+- [x] T151 [P] [US3] Create CommentForm component: `frontend/src/components/CommentForm.tsx` for adding new comments
+- [x] T152 [P] [US3] Create EditCommentForm component: `frontend/src/components/EditCommentForm.tsx` for editing existing comments
+- [x] T153 [P] [US3] Create DeleteCommentConfirmation modal: `frontend/src/components/DeleteConfirmation.tsx` (extend from T127)
+- [x] T154 [US3] Integrate CommentsList into TaskDetailsModal: `frontend/src/components/TaskDetailsModal.tsx`
 
 #### Real-Time Socket.IO Integration for Comments
 
-- [ ] T155 [US3] Create custom hook for comment real-time updates: `frontend/src/hooks/useCommentUpdates.ts` - listens to comment:create, comment:update, comment:delete
-- [ ] T156 [US3] Implement Socket.IO event listeners in CommentsList: `frontend/src/components/CommentsList.tsx` - update React Query cache
-- [ ] T157 [US3] Add visual feedback for comment operations (toast notifications): `frontend/src/components/CommentsList.tsx`
+- [x] T155 [US3] Create custom hook for comment real-time updates: `frontend/src/hooks/useCommentUpdates.ts` - listens to comment:create, comment:update, comment:delete
+- [x] T156 [US3] Implement Socket.IO event listeners in CommentsList: `frontend/src/components/CommentsList.tsx` - update React Query cache
+- [x] T157 [US3] Add visual feedback for comment operations (toast notifications): `frontend/src/components/CommentsList.tsx`
 
 #### React Query Integration for User Story 3
 
-- [ ] T158 [P] [US3] Create React Query hooks for comments: `frontend/src/hooks/useComments.ts` with useGetComments, useCreateComment, useUpdateComment, useDeleteComment
-- [ ] T159 [P] [US3] Implement optimistic updates for comment creation: `frontend/src/hooks/useComments.ts`
-- [ ] T160 [P] [US3] Implement authorization checks (hide edit/delete for non-authors): `frontend/src/components/CommentItem.tsx`
+- [x] T158 [P] [US3] Create React Query hooks for comments: `frontend/src/hooks/useComments.ts` with useGetComments, useCreateComment, useUpdateComment, useDeleteComment
+- [x] T159 [P] [US3] Implement optimistic updates for comment creation: `frontend/src/hooks/useComments.ts`
+- [x] T160 [P] [US3] Implement authorization checks (hide edit/delete for non-authors): `frontend/src/components/CommentItem.tsx`
 
 ### Integration Tests for User Story 3
 
-- [ ] T161 [P] [US3] Integration test for comment creation: `backend/tests/integration/comments.test.ts` - POST /api/v1/tasks/:taskId/comments
-- [ ] T162 [P] [US3] Integration test for listing comments: `backend/tests/integration/comments.test.ts` - GET /api/v1/tasks/:taskId/comments
-- [ ] T163 [P] [US3] Integration test for comment update (authorization): `backend/tests/integration/comments.test.ts` - PATCH /api/v1/comments/:commentId
-- [ ] T164 [P] [US3] Integration test for comment deletion (authorization): `backend/tests/integration/comments.test.ts` - DELETE /api/v1/comments/:commentId
-- [ ] T165 [P] [US3] Integration test for Socket.IO comment:create event: `backend/tests/integration/socket.test.ts`
-- [ ] T166 [P] [US3] Unit test for CommentService: `backend/tests/unit/services/commentService.test.ts`
-- [ ] T167 [P] [US3] Frontend integration test: add comment → edit comment → delete comment flow: `frontend/tests/integration/commentWorkflow.test.ts`
-- [ ] T168 [P] [US3] Component tests for CommentsList and CommentForm: `frontend/tests/unit/components/CommentsList.test.tsx`
+- [x] T161 [P] [US3] Integration test for comment creation: `backend/tests/integration/comments.test.ts` - POST /api/v1/tasks/:taskId/comments
+- [x] T162 [P] [US3] Integration test for listing comments: `backend/tests/integration/comments.test.ts` - GET /api/v1/tasks/:taskId/comments
+- [x] T163 [P] [US3] Integration test for comment update (authorization): `backend/tests/integration/comments.test.ts` - PATCH /api/v1/comments/:commentId
+- [x] T164 [P] [US3] Integration test for comment deletion (authorization): `backend/tests/integration/comments.test.ts` - DELETE /api/v1/comments/:commentId
+- [x] T165 [P] [US3] Integration test for Socket.IO comment:create event: `backend/tests/integration/socket.test.ts`
+- [x] T166 [P] [US3] Unit test for CommentService: `backend/tests/unit/services/commentService.test.ts`
+- [x] T167 [P] [US3] Frontend integration test: add comment → edit comment → delete comment flow: `frontend/tests/integration/commentWorkflow.test.ts`
+- [x] T168 [P] [US3] Component tests for CommentsList and CommentForm: `frontend/tests/unit/components/CommentsList.test.tsx`
 
 **Checkpoint**: User Story 3 is complete - Comments enable team collaboration
 

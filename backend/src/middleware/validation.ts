@@ -92,3 +92,40 @@ export function validateUpdateTaskStatus() {
     next();
   };
 }
+
+export function validateCreateComment() {
+  const schema = z.object({
+    text: z.string().trim().min(1, 'comment text is required').max(5000),
+    authorId: z.string().uuid().optional(),
+    currentUserId: z.string().uuid().optional(),
+  });
+
+  return (req: Request, res: Response, next: NextFunction) => {
+    const parsed = schema.safeParse(req.body);
+    if (!parsed.success) {
+      const msg = parsed.error.errors.map((e) => e.message).join('; ');
+      res.status(400).json({ error: msg });
+      return;
+    }
+    req.body.text = parsed.data.text;
+    next();
+  };
+}
+
+export function validateUpdateComment() {
+  const schema = z.object({
+    text: z.string().trim().min(1, 'comment text is required').max(5000),
+    currentUserId: z.string().uuid().optional(),
+  });
+
+  return (req: Request, res: Response, next: NextFunction) => {
+    const parsed = schema.safeParse(req.body);
+    if (!parsed.success) {
+      const msg = parsed.error.errors.map((e) => e.message).join('; ');
+      res.status(400).json({ error: msg });
+      return;
+    }
+    req.body.text = parsed.data.text;
+    next();
+  };
+}

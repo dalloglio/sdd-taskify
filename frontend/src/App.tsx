@@ -6,7 +6,7 @@ import UserSelector from './pages/UserSelector';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
       <Layout>
         <nav className="flex gap-4 mb-4 text-sm">
           <Link to="/user-select">Select User</Link>

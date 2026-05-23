@@ -26,7 +26,12 @@ export function renderWithProviders(
     options.withRouter === false ? (
       ui
     ) : (
-      <MemoryRouter initialEntries={[options.route ?? '/']}>{ui}</MemoryRouter>
+      <MemoryRouter
+        initialEntries={[options.route ?? '/']}
+        future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
+      >
+        {ui}
+      </MemoryRouter>
     );
 
   return render(

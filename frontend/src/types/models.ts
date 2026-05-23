@@ -37,5 +37,7 @@ export interface Comment {
   author: User;
   text: string;
   taskId: ID;
+  projectId?: ID;
   createdAt: string;
+  updatedAt?: string;
 }

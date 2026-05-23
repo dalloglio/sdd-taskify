@@ -1,6 +1,7 @@
 import { Task, TaskStatus, User } from '../types/models';
 import { getStatusLabel, KANBAN_COLUMNS } from '../utils/kanban';
 import AssigneeSelector from './AssigneeSelector';
+import CommentsList from './CommentsList';
 import UserAvatar from './UserAvatar';
 
 type Props = {
@@ -72,14 +73,7 @@ export default function TaskDetails({
         )}
       </div>
 
-      <div className="rounded-md bg-gray-50 p-3">
-        <p className="text-sm font-semibold text-gray-700">Comments</p>
-        <p className="mt-1 text-sm text-gray-600">
-          {task.commentCount
-            ? `${task.commentCount} comments available in the task thread.`
-            : 'No comments yet'}
-        </p>
-      </div>
+      <CommentsList task={task} />
 
       <div className="flex justify-between gap-2">
         <span className="rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-800">

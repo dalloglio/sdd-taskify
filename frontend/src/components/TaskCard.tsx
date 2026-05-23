@@ -25,7 +25,14 @@ export default function TaskCard({
 }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isCurrentUserTask = Boolean(task.assignee?.id && task.assignee.id === currentUser?.id);
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+  const {
+    attributes,
+    listeners,
+    setActivatorNodeRef,
+    setNodeRef,
+    transform,
+    isDragging,
+  } = useDraggable({
     id: task.id,
     data: { task },
   });
@@ -48,13 +55,14 @@ export default function TaskCard({
         isCurrentUserTask ? 'border-l-4 border-l-blue-500' : 'border-gray-200'
       } ${isDragging ? 'opacity-60' : ''}`}
       onClick={() => onOpen(task)}
-      {...attributes}
     >
       <div className="flex items-start gap-2">
         <button
+          ref={setActivatorNodeRef}
           className="min-w-0 flex-1 cursor-grab text-left active:cursor-grabbing"
           type="button"
           {...listeners}
+          {...attributes}
           aria-label={`Drag ${task.title}`}
         >
           <h4 className="truncate text-base font-bold text-gray-900">{task.title}</h4>

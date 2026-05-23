@@ -397,13 +397,13 @@
 
 ### Frontend Testing & Quality
 
-- [ ] T191 [P] Complete frontend component unit tests: `frontend/tests/unit/components/*.test.tsx` - Button, Input, Modal, TaskCard, etc.
-- [ ] T192 [P] Complete frontend integration tests for user workflows: `frontend/tests/integration/*.test.ts` - project creation, task movement, comments
-- [ ] T193 [P] Complete frontend E2E tests with Playwright: `frontend/tests/e2e/*.spec.ts` - full user journeys
-- [ ] T194 Create test fixtures for mock API responses: `frontend/tests/fixtures/api.ts`
-- [ ] T195 [P] Setup MSW (Mock Service Worker) for API mocking in tests: `frontend/src/mocks/handlers.ts`
-- [ ] T196 Run full frontend test suite: `npm test` in frontend/ with 70%+ coverage
-- [ ] T197 [P] Add accessibility tests (a11y) for components: `frontend/tests/a11y/*.test.tsx`
+- [x] T191 [P] Complete frontend component unit tests: `frontend/tests/unit/components/*.test.tsx` - Button, Input, Modal, TaskCard, etc.
+- [x] T192 [P] Complete frontend integration tests for user workflows: `frontend/tests/integration/*.test.ts` - project creation, task movement, comments
+- [x] T193 [P] Complete frontend E2E tests with Playwright: `frontend/tests/e2e/*.spec.ts` - full user journeys
+- [x] T194 Create test fixtures for mock API responses: `frontend/tests/fixtures/api.ts`
+- [x] T195 [P] Setup MSW (Mock Service Worker) for API mocking in tests: `frontend/src/mocks/handlers.ts`
+- [x] T196 Run full frontend test suite: `npm test` in frontend/ with 70%+ coverage
+- [x] T197 [P] Add accessibility tests (a11y) for components: `frontend/tests/a11y/*.test.tsx`
 
 ### Documentation & Developer Experience
 

@@ -387,13 +387,13 @@
 
 ### Backend Testing & Quality
 
-- [ ] T184 [P] Complete backend unit test suite for all services: `backend/tests/unit/services/*.test.ts` - ensure 80%+ coverage
-- [ ] T185 [P] Complete backend integration test suite for all endpoints: `backend/tests/integration/*.test.ts` - happy path + error cases
-- [ ] T186 [P] Add API contract tests matching contracts/: `backend/tests/contract/*.test.ts`
-- [ ] T187 Create test helper for database transactions (rollback after tests): `backend/tests/db-helper.ts`
-- [ ] T188 [P] Add error logging and monitoring setup: `backend/src/config/logging.ts`
-- [ ] T189 Run full backend test suite: `npm test` in backend/ with 80%+ coverage
-- [ ] T190 [P] Add performance benchmarks for critical paths: `backend/tests/performance/*.test.ts` - task listing, comment creation
+- [x] T184 [P] Complete backend unit test suite for all services: `backend/tests/unit/services/*.test.ts` - ensure 80%+ coverage
+- [x] T185 [P] Complete backend integration test suite for all endpoints: `backend/tests/integration/*.test.ts` - happy path + error cases
+- [x] T186 [P] Add API contract tests matching contracts/: `backend/tests/contract/*.test.ts`
+- [x] T187 Create test helper for database transactions (rollback after tests): `backend/tests/db-helper.ts`
+- [x] T188 [P] Add error logging and monitoring setup: `backend/src/config/logging.ts`
+- [x] T189 Run full backend test suite: `npm test` in backend/ with 80%+ coverage
+- [x] T190 [P] Add performance benchmarks for critical paths: `backend/tests/performance/*.test.ts` - task listing, comment creation
 
 ### Frontend Testing & Quality
 

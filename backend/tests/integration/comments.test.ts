@@ -145,4 +145,47 @@ describe('comments workflow integration', () => {
     );
     expect(res.status).toHaveBeenCalledWith(204);
   });
+
+  it('uses the current user header when creating comments', async () => {
+    mockCommentService.createComment.mockResolvedValue(commentFixture);
+
+    const res = createMockRes();
+    await createComment(
+      {
+        params: { taskId: 'task-1' },
+        body: { text: 'Looks good', authorId: 'body-user' },
+        header: jest.fn().mockReturnValue('header-user'),
+      } as never,
+      res as never
+    );
+
+    expect(mockCommentService.createComment).toHaveBeenCalledWith('task-1', {
+      text: 'Looks good',
+      authorId: 'header-user',
+    });
+  });
+
+  it('maps authorization errors to response status codes', async () => {
+    mockCommentService.updateComment.mockRejectedValue(
+      Object.assign(new Error('Only the comment author can modify this comment'), {
+        status: 403,
+      })
+    );
+
+    const res = createMockRes();
+    await updateComment(
+      {
+        params: { commentId: 'comment-1' },
+        body: { text: 'Updated', currentUserId: 'user-2' },
+        header: jest.fn().mockReturnValue(undefined),
+      } as never,
+      res as never
+    );
+
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      error: 'Only the comment author can modify this comment',
+    });
+  });
 });

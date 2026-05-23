@@ -25,6 +25,7 @@ jest.mock('../../src/db/client', () => ({
 import {
   addMember,
   createProject,
+  getProject,
   listProjects,
 } from '../../src/controllers/projectController';
 
@@ -134,6 +135,28 @@ describe('projects workflow integration', () => {
     });
   });
 
+  it('returns 404 when adding a member to a missing project', async () => {
+    mockPrisma.project.findUnique.mockResolvedValue(null);
+    mockPrisma.user.findUnique.mockResolvedValue({
+      id: '33333333-3333-4333-8333-333333333333',
+    });
+
+    const res = createMockRes();
+    await addMember(
+      {
+        params: { projectId: 'missing-project' },
+        body: { userId: '33333333-3333-4333-8333-333333333333' },
+      } as never,
+      res as never
+    );
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      error: 'Project not found',
+    });
+  });
+
   it('lists projects with member information', async () => {
     mockPrisma.project.findMany.mockResolvedValue([
       {
@@ -174,6 +197,62 @@ describe('projects workflow integration', () => {
           ],
         },
       ],
+    });
+  });
+
+  it('gets a project with team members', async () => {
+    mockPrisma.project.findUnique.mockResolvedValue({
+      id: 'project-1',
+      name: 'Website Redesign',
+      description: 'Revamp landing pages',
+      createdAt: new Date('2026-05-05T10:00:00.000Z'),
+      members: [
+        {
+          user: {
+            id: '11111111-1111-4111-8111-111111111111',
+            name: 'Alice Chen',
+            avatarUrl: null,
+          },
+        },
+      ],
+      tasks: [],
+    });
+
+    const res = createMockRes();
+    await getProject(
+      { params: { projectId: 'project-1' } } as never,
+      res as never
+    );
+
+    expect(res.json).toHaveBeenCalledWith({
+      success: true,
+      data: expect.objectContaining({
+        id: 'project-1',
+        isSample: true,
+        members: [
+          {
+            id: '11111111-1111-4111-8111-111111111111',
+            name: 'Alice Chen',
+            avatarUrl: null,
+          },
+        ],
+      }),
+    });
+  });
+
+  it('returns 404 for a missing project details request', async () => {
+    mockPrisma.project.findUnique.mockResolvedValue(null);
+
+    const res = createMockRes();
+    await getProject(
+      { params: { projectId: 'missing-project' } } as never,
+      res as never
+    );
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      error: 'Project not found',
     });
   });
 });

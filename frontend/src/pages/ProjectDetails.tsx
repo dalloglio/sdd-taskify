@@ -8,14 +8,14 @@ import { Project, User } from '../types/models';
 
 export default function ProjectDetails() {
   const { projectId } = useParams();
-  const { data: project } = useQuery(
-    ['project', projectId],
-    async () => {
+  const { data: project } = useQuery({
+    queryKey: ['project', projectId],
+    queryFn: async () => {
       const res = await api.get<ApiResponse<Project>>(`/projects/${projectId}`);
       return res.data.data as Project;
     },
-    { enabled: !!projectId }
-  );
+    enabled: !!projectId,
+  });
 
   if (!project) return <div>Loading project…</div>;
 

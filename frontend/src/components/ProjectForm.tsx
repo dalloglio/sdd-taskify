@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import TeamMemberSelector from './TeamMemberSelector';
 
 export default function ProjectForm({
@@ -15,6 +15,8 @@ export default function ProjectForm({
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [memberIds, setMemberIds] = useState<string[]>([]);
+  const nameId = useId();
+  const descriptionId = useId();
 
   return (
     <form
@@ -29,8 +31,11 @@ export default function ProjectForm({
       className="space-y-3"
     >
       <div>
-        <label className="block text-sm mb-1">Name</label>
+        <label className="block text-sm mb-1" htmlFor={nameId}>
+          Name
+        </label>
         <input
+          id={nameId}
           className="w-full border rounded px-2 py-1"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -38,8 +43,11 @@ export default function ProjectForm({
         />
       </div>
       <div>
-        <label className="block text-sm mb-1">Description</label>
+        <label className="block text-sm mb-1" htmlFor={descriptionId}>
+          Description
+        </label>
         <textarea
+          id={descriptionId}
           className="w-full border rounded px-2 py-1"
           value={description}
           onChange={(e) => setDescription(e.target.value)}

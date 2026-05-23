@@ -173,8 +173,8 @@
 - [x] T083 [P] [US1] Integration test for adding team members: `backend/tests/integration/projects.test.ts` - POST /api/v1/projects/:projectId/members
 - [x] T084 [P] [US1] Integration test for listing projects: `backend/tests/integration/projects.test.ts` - GET /api/v1/projects
 - [x] T085 [P] [US1] Unit test for ProjectService: `backend/tests/unit/services/projectService.test.ts`
-- [ ] T086 [P] [US1] Frontend integration test: user selection → project list → create project flow: `frontend/tests/integration/projectWorkflow.test.ts`
-- [ ] T087 [P] [US1] Component tests for ProjectForm and ProjectCard: `frontend/tests/unit/components/ProjectForm.test.tsx`
+- [x] T086 [P] [US1] Frontend integration test: user selection → project list → create project flow: `frontend/tests/integration/projectWorkflow.test.ts`
+- [x] T087 [P] [US1] Component tests for ProjectForm and ProjectCard: `frontend/tests/unit/components/ProjectForm.test.tsx`
 
 **Checkpoint**: User Story 1 is complete - Projects can be created and team members assigned independently from tasks
 

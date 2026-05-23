@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import UserAvatar from '../components/UserAvatar';
 import { useUserStore } from '../context/userStore';
 import { useGetUsers } from '../hooks/useUsers';
@@ -5,6 +6,7 @@ import { useGetUsers } from '../hooks/useUsers';
 export default function UserSelector() {
   const { data: users, isLoading } = useGetUsers();
   const { currentUser, setCurrentUser } = useUserStore();
+  const navigate = useNavigate();
 
   if (isLoading) return <div>Loading users…</div>;
 
@@ -15,7 +17,10 @@ export default function UserSelector() {
         {users?.map((u) => (
           <button
             key={u.id}
-            onClick={() => setCurrentUser(u)}
+            onClick={() => {
+              setCurrentUser(u);
+              navigate('/projects');
+            }}
             className={`flex items-center gap-3 p-3 border rounded ${
               currentUser?.id === u.id ? 'ring-2 ring-blue-500' : ''
             }`}

@@ -1,7 +1,7 @@
-import { defineConfig } from "./frontend/node_modules/playwright/test";
+import { defineConfig } from 'playwright/test';
 
 export default defineConfig({
-  testDir: "./frontend/tests/e2e",
+  testDir: './tests/e2e',
   timeout: 30_000,
   use: {
     headless: true,

@@ -354,27 +354,27 @@
 
 ### Backend Sample Data Population
 
-- [ ] T169 [P] [US4] Enhance Prisma seed with sample tasks for each project (5-10 per project): `backend/prisma/seed.ts`
-- [ ] T170 [P] [US4] Enhance Prisma seed with sample comments on various tasks: `backend/prisma/seed.ts`
-- [ ] T171 [P] [US4] Enhance Prisma seed with varied task statuses across columns: `backend/prisma/seed.ts`
-- [ ] T172 [US4] Re-run Prisma seed to verify all sample data: `npx prisma db seed`
-- [ ] T173 [P] [US4] Create endpoint GET /api/v1/sample-data (returns summary of loaded data): `backend/src/controllers/sampleController.ts`
+- [x] T169 [P] [US4] Enhance Prisma seed with sample tasks for each project (5-10 per project): `backend/prisma/seed.ts`
+- [x] T170 [P] [US4] Enhance Prisma seed with sample comments on various tasks: `backend/prisma/seed.ts`
+- [x] T171 [P] [US4] Enhance Prisma seed with varied task statuses across columns: `backend/prisma/seed.ts`
+- [x] T172 [US4] Re-run Prisma seed to verify all sample data: `npx prisma db seed`
+- [x] T173 [P] [US4] Create endpoint GET /api/v1/sample-data (returns summary of loaded data): `backend/src/controllers/sampleController.ts`
 
 ### Frontend Sample Data Exploration
 
-- [ ] T174 [P] [US4] Create SampleDataInfo component: `frontend/src/components/SampleDataInfo.tsx` shows loaded users and projects count
-- [ ] T175 [P] [US4] Enhance UserSelector to clearly show "5 Predefined Users Available": `frontend/src/pages/UserSelector.tsx`
-- [ ] T176 [P] [US4] Add sample data badge to ProjectCard: `frontend/src/components/ProjectCard.tsx` for sample projects
-- [ ] T177 [P] [US4] Create ProjectPreview component: `frontend/src/components/ProjectPreview.tsx` shows sample tasks/comments count
-- [ ] T178 [US4] Verify sample data loads without login flow: test full app initialization sequence
+- [x] T174 [P] [US4] Create SampleDataInfo component: `frontend/src/components/SampleDataInfo.tsx` shows loaded users and projects count
+- [x] T175 [P] [US4] Enhance UserSelector to clearly show "5 Predefined Users Available": `frontend/src/pages/UserSelector.tsx`
+- [x] T176 [P] [US4] Add sample data badge to ProjectCard: `frontend/src/components/ProjectCard.tsx` for sample projects
+- [x] T177 [P] [US4] Create ProjectPreview component: `frontend/src/components/ProjectPreview.tsx` shows sample tasks/comments count
+- [x] T178 [US4] Verify sample data loads without login flow: test full app initialization sequence
 
 ### Integration Tests for User Story 4
 
-- [ ] T179 [P] [US4] Integration test for loading sample users: `backend/tests/integration/sampleData.test.ts` - GET /api/v1/users returns exactly 5 users
-- [ ] T180 [P] [US4] Integration test for loading sample projects: `backend/tests/integration/sampleData.test.ts` - GET /api/v1/projects returns exactly 3 projects
-- [ ] T181 [P] [US4] Integration test for sample tasks: `backend/tests/integration/sampleData.test.ts` - verify tasks exist per project
-- [ ] T182 [P] [US4] Integration test for sample comments: `backend/tests/integration/sampleData.test.ts` - verify comments exist on tasks
-- [ ] T183 [P] [US4] E2E test for sample data exploration flow: `frontend/tests/e2e/sampleExploration.spec.ts` - launch app → select user → explore projects
+- [x] T179 [P] [US4] Integration test for loading sample users: `backend/tests/integration/sampleData.test.ts` - GET /api/v1/users returns exactly 5 users
+- [x] T180 [P] [US4] Integration test for loading sample projects: `backend/tests/integration/sampleData.test.ts` - GET /api/v1/projects returns exactly 3 projects
+- [x] T181 [P] [US4] Integration test for sample tasks: `backend/tests/integration/sampleData.test.ts` - verify tasks exist per project
+- [x] T182 [P] [US4] Integration test for sample comments: `backend/tests/integration/sampleData.test.ts` - verify comments exist on tasks
+- [x] T183 [P] [US4] E2E test for sample data exploration flow: `frontend/tests/e2e/sampleExploration.spec.ts` - launch app → select user → explore projects
 
 **Checkpoint**: User Story 4 complete - Full sample data available for exploration
 

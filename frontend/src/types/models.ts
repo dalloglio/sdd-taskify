@@ -14,6 +14,9 @@ export interface Project {
   description?: string;
   members: User[];
   createdAt: string;
+  isSample?: boolean;
+  tasksCount?: number;
+  commentsCount?: number;
 }
 
 export type TaskStatus = 'to_do' | 'in_progress' | 'in_review' | 'done';

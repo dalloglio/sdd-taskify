@@ -52,7 +52,11 @@ export async function createComment(req: Request, res: Response) {
     emitCommentAdded(mapped.projectId, mapped);
     return ok(res.status(201), mapped);
   } catch (err: any) {
-    return fail(res, err.message || 'Failed to create comment', errorStatus(err));
+    return fail(
+      res,
+      err.message || 'Failed to create comment',
+      errorStatus(err)
+    );
   }
 }
 
@@ -62,7 +66,11 @@ export async function listComments(req: Request, res: Response) {
     const comments = await commentService.getCommentsByTask(taskId);
     return ok(res, comments.map(mapComment));
   } catch (err: any) {
-    return fail(res, err.message || 'Failed to list comments', errorStatus(err));
+    return fail(
+      res,
+      err.message || 'Failed to list comments',
+      errorStatus(err)
+    );
   }
 }
 
@@ -77,7 +85,11 @@ export async function updateComment(req: Request, res: Response) {
     emitCommentUpdated(mapped.projectId, mapped);
     return ok(res, mapped);
   } catch (err: any) {
-    return fail(res, err.message || 'Failed to update comment', errorStatus(err));
+    return fail(
+      res,
+      err.message || 'Failed to update comment',
+      errorStatus(err)
+    );
   }
 }
 
@@ -97,7 +109,11 @@ export async function deleteComment(req: Request, res: Response) {
     });
     return res.status(204).send();
   } catch (err: any) {
-    return fail(res, err.message || 'Failed to delete comment', errorStatus(err));
+    return fail(
+      res,
+      err.message || 'Failed to delete comment',
+      errorStatus(err)
+    );
   }
 }
 

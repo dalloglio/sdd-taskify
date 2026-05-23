@@ -10,6 +10,7 @@ import { initSocketServer } from './realtime/socket-server';
 import commentsRouter from './routes/comments';
 import healthRouter from './routes/health';
 import projectsRouter from './routes/projects';
+import sampleRouter from './routes/sample';
 import tasksRouter from './routes/tasks';
 import usersRouter from './routes/users';
 
@@ -24,6 +25,7 @@ app.use(requestLogger);
 
 app.use('/health', healthRouter);
 app.use('/api/v1', commentsRouter);
+app.use('/api/v1', sampleRouter);
 app.use('/api/v1', tasksRouter);
 app.use('/api/v1/projects', projectsRouter);
 app.use('/api/v1/users', usersRouter);

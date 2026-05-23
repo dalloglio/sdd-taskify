@@ -12,7 +12,10 @@ export default function UserSelector() {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-2">Select User</h2>
+      <h2 className="text-xl font-semibold mb-1">Select your user</h2>
+      <p className="mb-4 text-sm text-gray-600">
+        {users?.length ?? 0} Predefined Users Available. No password required.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {users?.map((u) => (
           <button

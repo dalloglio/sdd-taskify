@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import * as projectService from '../services/projectService';
+import { SAMPLE_PROJECT_NAMES } from '../services/sampleService';
 import { fail, ok } from '../utils/response';
 
 function mapProject(p: any) {
-  return {
+  const mapped = {
     id: p.id,
     name: p.name,
     description: p.description ?? undefined,
@@ -15,6 +16,12 @@ function mapProject(p: any) {
       avatarUrl: m.user.avatarUrl,
     })),
   };
+
+  if (SAMPLE_PROJECT_NAMES.includes(p.name)) {
+    return { ...mapped, isSample: true };
+  }
+
+  return mapped;
 }
 
 export async function createProject(req: Request, res: Response) {

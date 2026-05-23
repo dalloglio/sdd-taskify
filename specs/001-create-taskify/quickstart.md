@@ -58,7 +58,7 @@ Copy `.env.example` to `.env` and configure:
 
 ```bash
 # .env
-DATABASE_URL=postgresql://postgres:password@localhost:5432/taskify
+DATABASE_URL=postgresql://postgres:password@localhost:5432/taskify?schema=public
 NODE_ENV=development
 PORT=3000
 CORS_ORIGIN=http://localhost:5173
@@ -118,7 +118,7 @@ Copy `.env.example` to `.env`:
 ```bash
 # .env
 VITE_API_BASE_URL=http://localhost:3000/api/v1
-VITE_WEBSOCKET_URL=ws://localhost:3000
+VITE_WEBSOCKET_URL=http://localhost:3000
 ```
 
 ### 3. Run Frontend Dev Server
@@ -222,25 +222,32 @@ Navigate to `http://localhost:5173/` in your browser.
 
 ### Running Tests
 
-**Backend Unit Tests**:
+**Backend Tests**:
 
 ```bash
 cd backend
 npm run test
 ```
 
-**Backend Integration Tests**:
+**Backend Watch Tests**:
 
 ```bash
 cd backend
-npm run test:integration
+npm run test:watch
 ```
 
-**Frontend Unit Tests**:
+**Frontend Tests**:
 
 ```bash
 cd frontend
 npm run test
+```
+
+**Frontend Test UI**:
+
+```bash
+cd frontend
+npm run test:ui
 ```
 
 **Frontend E2E Tests** (Playwright):
@@ -304,7 +311,7 @@ psql -U postgres -d taskify
 
 **Solution**:
 
-1. Verify backend WebSocket is listening: `npm run dev` shows "WebSocket server ready"
+1. Verify the backend is running on `http://localhost:3000`
 2. Check firewall/proxy settings allow WebSocket connections
 3. Verify `VITE_WEBSOCKET_URL` in frontend `.env`
 
@@ -314,9 +321,9 @@ psql -U postgres -d taskify
 
 Full API contracts are documented in:
 
-- [Projects API](../contracts/projects-api.md)
-- [Tasks API](../contracts/tasks-api.md)
-- [Notifications API](../contracts/notifications-api.md)
+- [Projects API](contracts/projects-api.md)
+- [Tasks API](contracts/tasks-api.md)
+- [Notifications API](contracts/notifications-api.md)
 
 ### Quick Example: Fetch Projects
 
@@ -343,11 +350,11 @@ Response:
 
 ## Next Steps
 
-1. **Read the Specification**: [spec.md](../spec.md) for detailed requirements
-2. **Review Data Model**: [data-model.md](../data-model.md) for entity definitions
-3. **Explore API Contracts**: [contracts/](../contracts/) for endpoint details
-4. **Check Implementation Plan**: [plan.md](../plan.md) for architecture decisions
-5. **View Research Findings**: [research.md](../research.md) for technology choices
+1. **Read the Specification**: [spec.md](spec.md) for detailed requirements
+2. **Review Data Model**: [data-model.md](data-model.md) for entity definitions
+3. **Explore API Contracts**: [contracts/](contracts/) for endpoint details
+4. **Check Implementation Plan**: [plan.md](plan.md) for architecture decisions
+5. **View Research Findings**: [research.md](research.md) for technology choices
 
 ---
 
@@ -398,4 +405,4 @@ For production deployment, ensure:
 - [ ] Error logging and monitoring are enabled
 - [ ] API rate limiting is configured
 
-See `docs/deployment.md` for detailed deployment instructions.
+Create deployment documentation before relying on this project for production deployment.

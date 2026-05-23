@@ -455,12 +455,12 @@
 
 ### Final Integration & Smoke Tests
 
-- [ ] T228 Run complete E2E test suite: `npm run test:e2e` from root
+- [ ] T228 Run complete E2E test suite from `frontend/`: `npm run test:e2e`
 - [ ] T229 Manual smoke test all user stories: user selection → create project → create task → move task → add comment
 - [ ] T230 Verify real-time updates work: open same project in 2 browsers, confirm live updates
 - [ ] T231 Verify no console errors: clean console logs in both frontend and backend
 - [ ] T232 Performance profiling: measure task listing load time, comment creation latency
-- [ ] T233 Verify sample data seeding works fresh: `npm run db:seed` completes successfully
+- [ ] T233 Verify sample data seeding works fresh from `backend/`: `npx prisma db seed` completes successfully
 - [ ] T234 Create release notes summarizing MVP features: `RELEASE_NOTES.md`
 
 **Checkpoint**: MVP is fully tested, documented, and production-ready

@@ -17,6 +17,19 @@ export function initSocketServer(server: HttpServer) {
       // eslint-disable-next-line no-console
       console.log(`Socket ${socket.id} joined ${room}`);
     });
+    socket.on('join_project', (payload: { projectId?: string }) => {
+      if (!payload.projectId) {
+        socket.emit('project:error', { error: 'projectId is required' });
+        return;
+      }
+      const room = `project-${payload.projectId}`;
+      socket.join(room);
+      socket.emit('project:joined', {
+        projectId: payload.projectId,
+        message: 'Joined project room',
+        timestamp: new Date().toISOString(),
+      });
+    });
 
     registerRealtimeHandlers(socket);
   });

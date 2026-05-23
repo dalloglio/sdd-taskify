@@ -195,26 +195,26 @@
 
 #### Tasks Service & Database
 
-- [ ] T088 [P] [US2] Create Task service layer: `backend/src/services/taskService.ts` with methods: createTask, getTask, getTasksByProject, updateTask, updateTaskStatus, deleteTask
-- [ ] T089 [US2] Implement POST /api/v1/projects/:projectId/tasks (create task) in controller and route: `backend/src/controllers/taskController.ts, backend/src/routes/tasks.ts`
-- [ ] T090 [US2] Implement GET /api/v1/projects/:projectId/tasks (list tasks by project and status) in controller: `backend/src/controllers/taskController.ts`
-- [ ] T091 [US2] Implement GET /api/v1/tasks/:taskId (get task details) in controller: `backend/src/controllers/taskController.ts`
-- [ ] T092 [US2] Implement PATCH /api/v1/tasks/:taskId (update task - title, description, assignee) in controller: `backend/src/controllers/taskController.ts`
-- [ ] T093 [US2] Implement PATCH /api/v1/tasks/:taskId/status (update task status/move to column) in controller: `backend/src/controllers/taskController.ts`
-- [ ] T094 [US2] Implement DELETE /api/v1/tasks/:taskId (soft delete task) in controller: `backend/src/controllers/taskController.ts`
-- [ ] T095 [US2] Register tasks routes in Express app: `backend/src/index.ts`
-- [ ] T096 [US2] Add validation for task creation (title required, assignee must be project member): `backend/src/middleware/validation.ts`
-- [ ] T097 [US2] Add validation for task status updates (only valid Kanban columns): `backend/src/middleware/validation.ts`
-- [ ] T098 [US2] Add error handling for invalid assignees and task not found: `backend/src/services/taskService.ts`
+- [x] T088 [P] [US2] Create Task service layer: `backend/src/services/taskService.ts` with methods: createTask, getTask, getTasksByProject, updateTask, updateTaskStatus, deleteTask
+- [x] T089 [US2] Implement POST /api/v1/projects/:projectId/tasks (create task) in controller and route: `backend/src/controllers/taskController.ts, backend/src/routes/tasks.ts`
+- [x] T090 [US2] Implement GET /api/v1/projects/:projectId/tasks (list tasks by project and status) in controller: `backend/src/controllers/taskController.ts`
+- [x] T091 [US2] Implement GET /api/v1/tasks/:taskId (get task details) in controller: `backend/src/controllers/taskController.ts`
+- [x] T092 [US2] Implement PATCH /api/v1/tasks/:taskId (update task - title, description, assignee) in controller: `backend/src/controllers/taskController.ts`
+- [x] T093 [US2] Implement PATCH /api/v1/tasks/:taskId/status (update task status/move to column) in controller: `backend/src/controllers/taskController.ts`
+- [x] T094 [US2] Implement DELETE /api/v1/tasks/:taskId (soft delete task) in controller: `backend/src/controllers/taskController.ts`
+- [x] T095 [US2] Register tasks routes in Express app: `backend/src/index.ts`
+- [x] T096 [US2] Add validation for task creation (title required, assignee must be project member): `backend/src/middleware/validation.ts`
+- [x] T097 [US2] Add validation for task status updates (only valid Kanban columns): `backend/src/middleware/validation.ts`
+- [x] T098 [US2] Add error handling for invalid assignees and task not found: `backend/src/services/taskService.ts`
 
 #### Socket.IO Real-Time Events for User Story 2
 
-- [ ] T099 [P] [US2] Create Socket.IO event handlers for task operations: `backend/src/realtime/handlers.ts` - task:create, task:update, task:move, task:delete
-- [ ] T100 [US2] Implement Socket.IO emit for task creation to project room: `backend/src/realtime/handlers.ts` and taskController - emit to `project-${projectId}`
-- [ ] T101 [US2] Implement Socket.IO emit for task status change to project room: `backend/src/realtime/handlers.ts` and taskController
-- [ ] T102 [US2] Implement Socket.IO emit for task updates (title, description, assignee): `backend/src/realtime/handlers.ts` and taskController
-- [ ] T103 [US2] Implement Socket.IO emit for task deletion to project room: `backend/src/realtime/handlers.ts` and taskController
-- [ ] T104 [US2] Add error handling and validation in Socket.IO event handlers: `backend/src/realtime/handlers.ts`
+- [x] T099 [P] [US2] Create Socket.IO event handlers for task operations: `backend/src/realtime/handlers.ts` - task:create, task:update, task:move, task:delete
+- [x] T100 [US2] Implement Socket.IO emit for task creation to project room: `backend/src/realtime/handlers.ts` and taskController - emit to `project-${projectId}`
+- [x] T101 [US2] Implement Socket.IO emit for task status change to project room: `backend/src/realtime/handlers.ts` and taskController
+- [x] T102 [US2] Implement Socket.IO emit for task updates (title, description, assignee): `backend/src/realtime/handlers.ts` and taskController
+- [x] T103 [US2] Implement Socket.IO emit for task deletion to project room: `backend/src/realtime/handlers.ts` and taskController
+- [x] T104 [US2] Add error handling and validation in Socket.IO event handlers: `backend/src/realtime/handlers.ts`
 
 ### Frontend Components for User Story 2
 
@@ -258,11 +258,11 @@
 
 ### Integration Tests for User Story 2
 
-- [ ] T128 [P] [US2] Integration test for task creation: `backend/tests/integration/tasks.test.ts` - POST /api/v1/projects/:projectId/tasks
-- [ ] T129 [P] [US2] Integration test for task listing: `backend/tests/integration/tasks.test.ts` - GET /api/v1/projects/:projectId/tasks
-- [ ] T130 [P] [US2] Integration test for task status update: `backend/tests/integration/tasks.test.ts` - PATCH /api/v1/tasks/:taskId/status
-- [ ] T131 [P] [US2] Integration test for Socket.IO task:move event: `backend/tests/integration/socket.test.ts`
-- [ ] T132 [P] [US2] Unit test for TaskService: `backend/tests/unit/services/taskService.test.ts`
+- [x] T128 [P] [US2] Integration test for task creation: `backend/tests/integration/tasks.test.ts` - POST /api/v1/projects/:projectId/tasks
+- [x] T129 [P] [US2] Integration test for task listing: `backend/tests/integration/tasks.test.ts` - GET /api/v1/projects/:projectId/tasks
+- [x] T130 [P] [US2] Integration test for task status update: `backend/tests/integration/tasks.test.ts` - PATCH /api/v1/tasks/:taskId/status
+- [x] T131 [P] [US2] Integration test for Socket.IO task:move event: `backend/tests/integration/socket.test.ts`
+- [x] T132 [P] [US2] Unit test for TaskService: `backend/tests/unit/services/taskService.test.ts`
 - [ ] T133 [P] [US2] Frontend integration test: create task → move task → see real-time update: `frontend/tests/integration/kanbanWorkflow.test.ts`
 - [ ] T134 [P] [US2] Component tests for KanbanBoard and TaskCard: `frontend/tests/unit/components/KanbanBoard.test.tsx`
 - [ ] T135 [P] [US2] Test drag-and-drop interactions: `frontend/tests/integration/dragAndDrop.test.ts`

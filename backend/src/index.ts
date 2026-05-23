@@ -9,6 +9,7 @@ import { requestLogger } from './middleware/logging';
 import { initSocketServer } from './realtime/socket-server';
 import healthRouter from './routes/health';
 import projectsRouter from './routes/projects';
+import tasksRouter from './routes/tasks';
 import usersRouter from './routes/users';
 
 loadEnv();
@@ -21,6 +22,7 @@ app.use(json());
 app.use(requestLogger);
 
 app.use('/health', healthRouter);
+app.use('/api/v1', tasksRouter);
 app.use('/api/v1/projects', projectsRouter);
 app.use('/api/v1/users', usersRouter);
 

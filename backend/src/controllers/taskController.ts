@@ -84,7 +84,8 @@ export async function listTasks(req: Request, res: Response) {
     } = {};
 
     if (req.query.status) filters.status = req.query.status as TaskStatus;
-    if (req.query.assigneeId) filters.assigneeId = req.query.assigneeId as string;
+    if (req.query.assigneeId)
+      filters.assigneeId = req.query.assigneeId as string;
     if (req.query.limit) filters.limit = Number(req.query.limit);
     if (req.query.offset) filters.offset = Number(req.query.offset);
 

@@ -13,12 +13,14 @@ function projectRoom(projectId: string) {
   return `project-${projectId}`;
 }
 
-function isTaskEventPayload(payload: unknown): payload is ValidTaskEventPayload {
+function isTaskEventPayload(
+  payload: unknown
+): payload is ValidTaskEventPayload {
   return Boolean(
     payload &&
-      typeof payload === 'object' &&
-      'projectId' in payload &&
-      typeof (payload as TaskEventPayload).projectId === 'string'
+    typeof payload === 'object' &&
+    'projectId' in payload &&
+    typeof (payload as TaskEventPayload).projectId === 'string'
   );
 }
 

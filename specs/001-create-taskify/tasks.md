@@ -220,41 +220,41 @@
 
 #### Kanban Board & Task Cards
 
-- [ ] T105 [P] [US2] Create KanbanBoard page component: `frontend/src/pages/KanbanBoard.tsx` displays 4 columns (To Do, In Progress, In Review, Done)
-- [ ] T106 [P] [US2] Create TaskColumn component for each Kanban column: `frontend/src/components/TaskColumn.tsx` with dnd-kit droppable
-- [ ] T107 [P] [US2] Create TaskCard component: `frontend/src/components/TaskCard.tsx` displays task title, assignee, with dnd-kit draggable
-- [ ] T108 [P] [US2] Create TaskForm component for creating/editing tasks: `frontend/src/components/TaskForm.tsx` with title, description, assignee inputs
-- [ ] T109 [P] [US2] Create TaskDetails component: `frontend/src/components/TaskDetails.tsx` shows full task info with status selector
-- [ ] T110 [P] [US2] Create AssigneeSelector component: `frontend/src/components/AssigneeSelector.tsx` dropdown with project team members
-- [ ] T111 [P] [US2] Create CurrentUserHighlight styling component: `frontend/src/components/TaskCard.tsx` enhances styling for current user's tasks
+- [x] T105 [P] [US2] Create KanbanBoard page component: `frontend/src/pages/KanbanBoard.tsx` displays 4 columns (To Do, In Progress, In Review, Done)
+- [x] T106 [P] [US2] Create TaskColumn component for each Kanban column: `frontend/src/components/TaskColumn.tsx` with dnd-kit droppable
+- [x] T107 [P] [US2] Create TaskCard component: `frontend/src/components/TaskCard.tsx` displays task title, assignee, with dnd-kit draggable
+- [x] T108 [P] [US2] Create TaskForm component for creating/editing tasks: `frontend/src/components/TaskForm.tsx` with title, description, assignee inputs
+- [x] T109 [P] [US2] Create TaskDetails component: `frontend/src/components/TaskDetails.tsx` shows full task info with status selector
+- [x] T110 [P] [US2] Create AssigneeSelector component: `frontend/src/components/AssigneeSelector.tsx` dropdown with project team members
+- [x] T111 [P] [US2] Create CurrentUserHighlight styling component: `frontend/src/components/TaskCard.tsx` enhances styling for current user's tasks
 
 #### Drag-and-Drop Implementation
 
-- [ ] T112 [US2] Integrate dnd-kit into KanbanBoard: `frontend/src/pages/KanbanBoard.tsx` with DndContext, DragOverlay
-- [ ] T113 [US2] Implement drag event handlers for task movement: `frontend/src/pages/KanbanBoard.tsx` - handleDragEnd for column/index updates
-- [ ] T114 [US2] Implement optimistic UI update on drag-and-drop: `frontend/src/pages/KanbanBoard.tsx` - update local state before server response
-- [ ] T115 [US2] Handle drag-and-drop validation (drop outside columns, invalid targets): `frontend/src/pages/KanbanBoard.tsx`
-- [ ] T116 [P] [US2] Create custom dnd-kit sensor for touch support: `frontend/src/hooks/useDragDrop.ts`
+- [x] T112 [US2] Integrate dnd-kit into KanbanBoard: `frontend/src/pages/KanbanBoard.tsx` with DndContext, DragOverlay
+- [x] T113 [US2] Implement drag event handlers for task movement: `frontend/src/pages/KanbanBoard.tsx` - handleDragEnd for column/index updates
+- [x] T114 [US2] Implement optimistic UI update on drag-and-drop: `frontend/src/pages/KanbanBoard.tsx` - update local state before server response
+- [x] T115 [US2] Handle drag-and-drop validation (drop outside columns, invalid targets): `frontend/src/pages/KanbanBoard.tsx`
+- [x] T116 [P] [US2] Create custom dnd-kit sensor for touch support: `frontend/src/hooks/useDragDrop.ts`
 
 #### Real-Time Socket.IO Integration
 
-- [ ] T117 [US2] Create custom hook for Kanban real-time updates: `frontend/src/hooks/useBoardUpdates.ts` - listens to task:move, task:create, task:update, task:delete
-- [ ] T118 [US2] Implement Socket.IO event listeners in KanbanBoard: `frontend/src/pages/KanbanBoard.tsx` - update React Query cache on events
-- [ ] T119 [US2] Implement optimistic rollback on Socket.IO error: `frontend/src/hooks/useBoardUpdates.ts`
-- [ ] T120 [US2] Add visual feedback for real-time updates (toast notifications): `frontend/src/pages/KanbanBoard.tsx`
+- [x] T117 [US2] Create custom hook for Kanban real-time updates: `frontend/src/hooks/useBoardUpdates.ts` - listens to task:move, task:create, task:update, task:delete
+- [x] T118 [US2] Implement Socket.IO event listeners in KanbanBoard: `frontend/src/pages/KanbanBoard.tsx` - update React Query cache on events
+- [x] T119 [US2] Implement optimistic rollback on Socket.IO error: `frontend/src/hooks/useBoardUpdates.ts`
+- [x] T120 [US2] Add visual feedback for real-time updates (toast notifications): `frontend/src/pages/KanbanBoard.tsx`
 
 #### React Query Integration for User Story 2
 
-- [ ] T121 [P] [US2] Create React Query hooks for tasks: `frontend/src/hooks/useTasks.ts` with useGetTasks, useCreateTask, useUpdateTask, useUpdateTaskStatus, useDeleteTask
-- [ ] T122 [P] [US2] Implement optimistic updates for task creation in React Query: `frontend/src/hooks/useTasks.ts`
-- [ ] T123 [P] [US2] Implement optimistic updates for task status change in React Query: `frontend/src/hooks/useTasks.ts`
-- [ ] T124 [P] [US2] Implement rollback on mutation failure: `frontend/src/hooks/useTasks.ts`
+- [x] T121 [P] [US2] Create React Query hooks for tasks: `frontend/src/hooks/useTasks.ts` with useGetTasks, useCreateTask, useUpdateTask, useUpdateTaskStatus, useDeleteTask
+- [x] T122 [P] [US2] Implement optimistic updates for task creation in React Query: `frontend/src/hooks/useTasks.ts`
+- [x] T123 [P] [US2] Implement optimistic updates for task status change in React Query: `frontend/src/hooks/useTasks.ts`
+- [x] T124 [P] [US2] Implement rollback on mutation failure: `frontend/src/hooks/useTasks.ts`
 
 #### Task Modals & Dialogs
 
-- [ ] T125 [P] [US2] Create CreateTaskModal component: `frontend/src/components/CreateTaskModal.tsx` with form integration
-- [ ] T126 [P] [US2] Create TaskDetailsModal component: `frontend/src/components/TaskDetailsModal.tsx` for viewing/editing task
-- [ ] T127 [P] [US2] Create DeleteTaskConfirmation modal: `frontend/src/components/DeleteConfirmation.tsx`
+- [x] T125 [P] [US2] Create CreateTaskModal component: `frontend/src/components/CreateTaskModal.tsx` with form integration
+- [x] T126 [P] [US2] Create TaskDetailsModal component: `frontend/src/components/TaskDetailsModal.tsx` for viewing/editing task
+- [x] T127 [P] [US2] Create DeleteTaskConfirmation modal: `frontend/src/components/DeleteConfirmation.tsx`
 
 ### Integration Tests for User Story 2
 
@@ -263,9 +263,9 @@
 - [x] T130 [P] [US2] Integration test for task status update: `backend/tests/integration/tasks.test.ts` - PATCH /api/v1/tasks/:taskId/status
 - [x] T131 [P] [US2] Integration test for Socket.IO task:move event: `backend/tests/integration/socket.test.ts`
 - [x] T132 [P] [US2] Unit test for TaskService: `backend/tests/unit/services/taskService.test.ts`
-- [ ] T133 [P] [US2] Frontend integration test: create task → move task → see real-time update: `frontend/tests/integration/kanbanWorkflow.test.ts`
-- [ ] T134 [P] [US2] Component tests for KanbanBoard and TaskCard: `frontend/tests/unit/components/KanbanBoard.test.tsx`
-- [ ] T135 [P] [US2] Test drag-and-drop interactions: `frontend/tests/integration/dragAndDrop.test.ts`
+- [x] T133 [P] [US2] Frontend integration test: create task → move task → see real-time update: `frontend/tests/integration/kanbanWorkflow.test.ts`
+- [x] T134 [P] [US2] Component tests for KanbanBoard and TaskCard: `frontend/tests/unit/components/KanbanBoard.test.tsx`
+- [x] T135 [P] [US2] Test drag-and-drop interactions: `frontend/tests/integration/dragAndDrop.test.ts`
 
 **Checkpoint**: User Story 2 is complete - Tasks can be created and moved through Kanban columns with real-time updates (MVP feature set complete)
 

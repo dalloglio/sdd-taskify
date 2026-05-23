@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import api from '../services/api';
 import { ApiResponse } from '../types/api';
-import { Task } from '../types/models';
+import { Task, TaskStatus } from '../types/models';
 
 export function useGetTasks(projectId?: string) {
   return useQuery<Task[]>({
@@ -23,7 +23,8 @@ export function useCreateTask(projectId: string) {
     mutationFn: async (payload: {
       title: string;
       description?: string;
-      assigneeId?: string;
+      assigneeId?: string | null;
+      createdById?: string;
     }) => {
       const res = await api.post<ApiResponse<Task>>(
         `/projects/${projectId}/tasks`,
@@ -39,7 +40,7 @@ export function useCreateTask(projectId: string) {
         title: newTask.title,
         description: newTask.description,
         assignee: null,
-        status: 'todo',
+        status: 'to_do',
         projectId,
         createdAt: new Date().toISOString(),
       };
@@ -59,7 +60,13 @@ export function useCreateTask(projectId: string) {
 export function useUpdateTaskStatus(projectId: string) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ taskId, status }: { taskId: string; status: string }) => {
+    mutationFn: async ({
+      taskId,
+      status,
+    }: {
+      taskId: string;
+      status: TaskStatus;
+    }) => {
       const res = await api.patch<ApiResponse<Task>>(
         `/tasks/${taskId}/status`,
         { status }
@@ -75,6 +82,75 @@ export function useUpdateTaskStatus(projectId: string) {
       return { previous };
     },
     onError: (_err, _vars, context) => {
+      if (context?.previous)
+        qc.setQueryData(['tasks', projectId], context.previous);
+    },
+    onSettled: () => qc.invalidateQueries({ queryKey: ['tasks', projectId] }),
+  });
+}
+
+export function useUpdateTask(projectId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      taskId,
+      ...payload
+    }: {
+      taskId: string;
+      title?: string;
+      description?: string | null;
+      assigneeId?: string | null;
+      status?: TaskStatus;
+    }) => {
+      const res = await api.patch<ApiResponse<Task>>(`/tasks/${taskId}`, payload);
+      return res.data.data;
+    },
+    onMutate: async ({ taskId, ...payload }) => {
+      await qc.cancelQueries({ queryKey: ['tasks', projectId] });
+      const previous = qc.getQueryData<Task[]>(['tasks', projectId]);
+      qc.setQueryData<Task[] | undefined>(['tasks', projectId], (old) =>
+        old
+          ? old.map((task) =>
+              task.id === taskId
+                ? {
+                    ...task,
+                    title: payload.title ?? task.title,
+                    description:
+                      payload.description === undefined
+                        ? task.description
+                        : payload.description ?? undefined,
+                    status: payload.status ?? task.status,
+                  }
+                : task
+            )
+          : old
+      );
+      return { previous };
+    },
+    onError: (_err, _vars, context) => {
+      if (context?.previous)
+        qc.setQueryData(['tasks', projectId], context.previous);
+    },
+    onSettled: () => qc.invalidateQueries({ queryKey: ['tasks', projectId] }),
+  });
+}
+
+export function useDeleteTask(projectId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (taskId: string) => {
+      await api.delete(`/tasks/${taskId}`);
+      return taskId;
+    },
+    onMutate: async (taskId) => {
+      await qc.cancelQueries({ queryKey: ['tasks', projectId] });
+      const previous = qc.getQueryData<Task[]>(['tasks', projectId]);
+      qc.setQueryData<Task[] | undefined>(['tasks', projectId], (old) =>
+        old ? old.filter((task) => task.id !== taskId) : old
+      );
+      return { previous };
+    },
+    onError: (_err, _taskId, context) => {
       if (context?.previous)
         qc.setQueryData(['tasks', projectId], context.previous);
     },

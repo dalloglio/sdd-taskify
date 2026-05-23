@@ -3,6 +3,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import queryClient from './config/queryClient';
+import './styles/globals.css';
+import './styles/components.css';
 
 const root = document.getElementById('root')!;
 createRoot(root).render(

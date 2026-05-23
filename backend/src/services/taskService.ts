@@ -97,7 +97,11 @@ function resolveCreatorId(
     return project.createdById;
   }
 
-  assertProjectMember(project.members, resolved, 'Creator must be a project member');
+  assertProjectMember(
+    project.members,
+    resolved,
+    'Creator must be a project member'
+  );
   return resolved;
 }
 
@@ -151,7 +155,12 @@ export async function getTask(taskId: string) {
 
 export async function getTasksByProject(
   projectId: string,
-  filters: { status?: TaskStatus; assigneeId?: string; limit?: number; offset?: number } = {}
+  filters: {
+    status?: TaskStatus;
+    assigneeId?: string;
+    limit?: number;
+    offset?: number;
+  } = {}
 ) {
   await getProjectOrThrow(projectId);
 

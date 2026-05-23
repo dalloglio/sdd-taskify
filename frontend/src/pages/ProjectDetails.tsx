@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import KanbanBoard from './KanbanBoard';
 import ProjectHeader from '../components/ProjectHeader';
 import TeamMemberList from '../components/TeamMemberList';
 import api from '../services/api';
@@ -27,7 +28,7 @@ export default function ProjectDetails() {
         <TeamMemberList members={(project.members || []) as User[]} />
       </section>
       <section>
-        <p className="text-sm text-gray-600">Kanban board will appear here.</p>
+        <KanbanBoard project={project} />
       </section>
     </div>
   );

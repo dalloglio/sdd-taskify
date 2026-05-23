@@ -32,12 +32,7 @@ export function validateCreateProject() {
   };
 }
 
-const taskStatusSchema = z.enum([
-  'to_do',
-  'in_progress',
-  'in_review',
-  'done',
-]);
+const taskStatusSchema = z.enum(['to_do', 'in_progress', 'in_review', 'done']);
 
 export function validateCreateTask() {
   const schema = z.object({

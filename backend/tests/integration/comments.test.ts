@@ -167,9 +167,12 @@ describe('comments workflow integration', () => {
 
   it('maps authorization errors to response status codes', async () => {
     mockCommentService.updateComment.mockRejectedValue(
-      Object.assign(new Error('Only the comment author can modify this comment'), {
-        status: 403,
-      })
+      Object.assign(
+        new Error('Only the comment author can modify this comment'),
+        {
+          status: 403,
+        }
+      )
     );
 
     const res = createMockRes();

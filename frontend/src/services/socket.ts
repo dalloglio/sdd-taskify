@@ -1,4 +1,5 @@
 import { io, Socket } from 'socket.io-client';
+import { useUserStore } from '../context/userStore';
 
 let socket: Socket | null = null;
 let activeProjectId: string | null = null;
@@ -20,7 +21,15 @@ function notifyStatus(status: SocketStatus) {
 
 function joinActiveProject() {
   if (!socket || !activeProjectId) return;
+  const currentUser = useUserStore.getState().currentUser;
+  if (!currentUser) return;
+  socket.auth = { userId: currentUser.id };
   socket.emit('join_project', { projectId: activeProjectId });
+}
+
+function getSocketAuth() {
+  const userId = useUserStore.getState().currentUser?.id;
+  return userId ? { userId } : {};
 }
 
 export function onSocketStatusChange(listener: SocketStatusListener) {
@@ -34,6 +43,7 @@ export function initSocket(options?: { projectId?: string }) {
       (import.meta.env.VITE_WEBSOCKET_URL as string) || 'http://localhost:3000';
     socket = io(url, {
       autoConnect: false,
+      auth: getSocketAuth(),
       reconnection: true,
       reconnectionAttempts: 8,
       reconnectionDelay: 500,
@@ -67,6 +77,7 @@ export function initSocket(options?: { projectId?: string }) {
     }
   }
 
+  socket.auth = getSocketAuth();
   socket.connect();
   return socket;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Socket } from 'socket.io-client';
-import { closeSocket, initSocket } from '../services/socket';
+import { initSocket } from '../services/socket';
 
 type ListenerMap = Record<string, (...args: any[]) => void>;
 
@@ -23,7 +23,6 @@ export function useSocket(projectId?: string, listeners?: ListenerMap) {
           s.off(event, handler);
         });
       }
-      closeSocket();
     };
   }, [projectId]);
 

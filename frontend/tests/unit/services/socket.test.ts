@@ -1,4 +1,5 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { useUserStore } from '../../../src/context/userStore';
 
 const handlers = new Map<string, (...args: any[]) => void>();
 const managerHandlers = new Map<string, (...args: any[]) => void>();
@@ -27,10 +28,25 @@ vi.mock('socket.io-client', () => ({
 }));
 
 describe('socket service resilience', () => {
+  beforeEach(() => {
+    handlers.clear();
+    managerHandlers.clear();
+    emit.mockClear();
+    connect.mockClear();
+    disconnect.mockClear();
+    removeAllListeners.mockClear();
+    useUserStore.setState({
+      currentUser: {
+        id: '11111111-1111-4111-8111-111111111111',
+        name: 'Alice Chen',
+        role: 'product_manager',
+      },
+    });
+  });
+
   it('reports reconnecting and rejoins the active project after reconnect', async () => {
-    const { closeSocket, initSocket, onSocketStatusChange } = await import(
-      '../../../src/services/socket'
-    );
+    const { closeSocket, initSocket, onSocketStatusChange } =
+      await import('../../../src/services/socket');
     const statuses: string[] = [];
     const unsubscribe = onSocketStatusChange((status) => statuses.push(status));
 
@@ -39,7 +55,9 @@ describe('socket service resilience', () => {
     handlers.get('connect')?.();
 
     expect(statuses).toEqual(['reconnecting', 'connected']);
-    expect(emit).toHaveBeenCalledWith('join_project', { projectId: 'project-1' });
+    expect(emit).toHaveBeenCalledWith('join_project', {
+      projectId: 'project-1',
+    });
 
     unsubscribe();
     closeSocket();

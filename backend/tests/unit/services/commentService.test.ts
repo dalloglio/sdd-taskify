@@ -87,7 +87,10 @@ describe('commentService', () => {
 
   it('allows only the author to update a comment', async () => {
     mockPrisma.comment.findFirst.mockResolvedValue(comment);
-    mockPrisma.comment.update.mockResolvedValue({ ...comment, text: 'Updated' });
+    mockPrisma.comment.update.mockResolvedValue({
+      ...comment,
+      text: 'Updated',
+    });
 
     await expect(
       updateComment('comment-1', {

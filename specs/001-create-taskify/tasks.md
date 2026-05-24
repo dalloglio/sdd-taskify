@@ -433,11 +433,11 @@
 
 ### Security Review
 
-- [ ] T215 [P] Validate CORS configuration restricts to allowed origins: `backend/src/index.ts`
-- [ ] T216 [P] Review input validation on all endpoints: ensure all user inputs validated
-- [ ] T217 [P] Review authorization checks: verify only project members can access project data
-- [ ] T218 [P] Add security headers (CSP, X-Frame-Options, etc.): `backend/src/index.ts`
-- [ ] T219 Review Socket.IO security: verify project room membership enforced: `backend/src/realtime/middleware.ts`
+- [x] T215 [P] Validate CORS configuration restricts to allowed origins: `backend/src/index.ts`
+- [x] T216 [P] Review input validation on all endpoints: ensure all user inputs validated
+- [x] T217 [P] Review authorization checks: verify only project members can access project data
+- [x] T218 [P] Add security headers (CSP, X-Frame-Options, etc.): `backend/src/index.ts`
+- [x] T219 Review Socket.IO security: verify project room membership enforced: `backend/src/realtime/middleware.ts`
 
 ### Docker & Containerization (Optional for MVP)
 

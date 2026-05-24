@@ -25,6 +25,30 @@ function isTaskEventPayload(
   );
 }
 
+function isJoinedToProject(socket: Socket, projectId: string) {
+  return socket.rooms.has(projectRoom(projectId));
+}
+
+function validateClientEvent(
+  socket: Socket,
+  payload: unknown,
+  errorEvent: string
+): payload is ValidTaskEventPayload {
+  if (!isTaskEventPayload(payload)) {
+    socket.emit(errorEvent, { error: 'projectId is required' });
+    return false;
+  }
+
+  if (!isJoinedToProject(socket, payload.projectId)) {
+    socket.emit(errorEvent, {
+      error: 'Current user has not joined this project room',
+    });
+    return false;
+  }
+
+  return true;
+}
+
 function emitFromApi(event: string, projectId: string, payload: unknown) {
   try {
     getIo().to(projectRoom(projectId)).emit(event, payload);
@@ -63,58 +87,37 @@ export function emitCommentDeleted(projectId: string, payload: unknown) {
 
 export function registerRealtimeHandlers(socket: Socket) {
   socket.on('task:create', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('task:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'task:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('task:created', payload);
   });
 
   socket.on('task:update', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('task:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'task:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('task:updated', payload);
   });
 
   socket.on('task:move', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('task:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'task:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('task:moved', payload);
   });
 
   socket.on('task:delete', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('task:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'task:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('task:deleted', payload);
   });
 
   socket.on('comment:create', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('comment:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'comment:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('comment:added', payload);
   });
 
   socket.on('comment:update', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('comment:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'comment:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('comment:updated', payload);
   });
 
   socket.on('comment:delete', (payload) => {
-    if (!isTaskEventPayload(payload)) {
-      socket.emit('comment:error', { error: 'projectId is required' });
-      return;
-    }
+    if (!validateClientEvent(socket, payload, 'comment:error')) return;
     socket.to(projectRoom(payload.projectId)).emit('comment:deleted', payload);
   });
 }

@@ -1,27 +1,38 @@
 import { Server as HttpServer } from 'http';
 import { Server as IOServer, Socket } from 'socket.io';
+import { createCorsOptions } from '../config/security';
 import { registerRealtimeHandlers } from './handlers';
+import { validateProjectMembership } from './middleware';
 
 let io: IOServer | null = null;
 
 export function initSocketServer(server: HttpServer) {
   io = new IOServer(server, {
-    cors: { origin: process.env.CORS_ORIGIN || '*' },
+    cors: createCorsOptions(),
   });
 
   io.on('connection', (socket: Socket) => {
-    // eslint-disable-next-line no-console
-    console.log('Socket connected', socket.id);
-    socket.on('joinProject', (room: string) => {
-      socket.join(room);
-      // eslint-disable-next-line no-console
-      console.log(`Socket ${socket.id} joined ${room}`);
+    socket.on('joinProject', () => {
+      socket.emit('project:error', {
+        error: 'Use join_project with projectId and authenticated user context',
+      });
     });
-    socket.on('join_project', (payload: { projectId?: string }) => {
+    socket.on('join_project', async (payload: { projectId?: string }) => {
       if (!payload.projectId) {
         socket.emit('project:error', { error: 'projectId is required' });
         return;
       }
+      const isMember = await validateProjectMembership(
+        socket,
+        payload.projectId
+      );
+      if (!isMember) {
+        socket.emit('project:error', {
+          error: 'Current user is not a project member',
+        });
+        return;
+      }
+
       const room = `project-${payload.projectId}`;
       socket.join(room);
       socket.emit('project:joined', {

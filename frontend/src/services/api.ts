@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useUserStore } from '../context/userStore';
 
 const BASE =
   (import.meta.env.VITE_API_BASE_URL as string) ||
@@ -12,11 +13,10 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('taskify:token')
-      : null;
-  if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
+  const currentUser = useUserStore.getState().currentUser;
+  if (currentUser && config.headers) {
+    config.headers['X-Current-User-Id'] = currentUser.id;
+  }
   return config;
 });
 

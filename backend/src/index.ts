@@ -1,9 +1,11 @@
 import { json } from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import helmet from 'helmet';
 import http from 'http';
 import { loadEnv } from './config/env';
 import { logger } from './config/logging';
+import { createCorsOptions } from './config/security';
 import { connectDb } from './db/client';
 import { errorHandler } from './middleware/errorHandler';
 import { requestLogger } from './middleware/logging';
@@ -22,7 +24,8 @@ loadEnv();
 const app = express();
 const port = process.env.PORT || '3000';
 
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+app.use(helmet());
+app.use(cors(createCorsOptions()));
 app.use(json());
 app.use(requestLogger);
 app.use(staticCacheHeaders);

@@ -183,10 +183,7 @@ describe('tasks workflow integration', () => {
     });
 
     const res = createMockRes();
-    await getTask(
-      { params: { taskId: 'task-1' } } as never,
-      res as never
-    );
+    await getTask({ params: { taskId: 'task-1' } } as never, res as never);
 
     expect(mockTaskService.getTask).toHaveBeenCalledWith('task-1');
     expect(res.json).toHaveBeenCalledWith({
@@ -236,10 +233,7 @@ describe('tasks workflow integration', () => {
     mockTaskService.deleteTask.mockResolvedValue([taskFixture]);
 
     const res = createMockRes();
-    await deleteTask(
-      { params: { taskId: 'task-1' } } as never,
-      res as never
-    );
+    await deleteTask({ params: { taskId: 'task-1' } } as never, res as never);
 
     expect(mockTaskService.deleteTask).toHaveBeenCalledWith('task-1');
     expect(mockRealtime.emitTaskDeleted).toHaveBeenCalledWith(

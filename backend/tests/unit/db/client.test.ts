@@ -13,7 +13,9 @@ describe('database circuit breaker', () => {
 
   it('opens after repeated database failures and rejects new operations', async () => {
     const { dbCircuitBreaker } = await import('../../../src/db/client');
-    const failingOperation = jest.fn().mockRejectedValue(new Error('db offline'));
+    const failingOperation = jest
+      .fn()
+      .mockRejectedValue(new Error('db offline'));
 
     for (let i = 0; i < 5; i += 1) {
       await expect(dbCircuitBreaker.execute(failingOperation)).rejects.toThrow(

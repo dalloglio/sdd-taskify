@@ -10,7 +10,7 @@ Taskify is a team productivity platform with a React frontend and Node.js/Expres
 ## Prerequisites
 
 - **Node.js**: 20.x LTS
-- **PostgreSQL**: 14+ (Docker)
+- **Docker Compose**: For local PostgreSQL 14+
 - **npm**: For package management
 - **Git**: For version control
 
@@ -64,11 +64,13 @@ PORT=3000
 CORS_ORIGIN=http://localhost:5173
 ```
 
-For Docker PostgreSQL:
+Start PostgreSQL with Docker Compose from the repository root:
 
 ```bash
-docker run --name taskify-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=taskify -p 5432:5432 -d postgres:14
+docker compose up -d postgres
 ```
+
+The Compose service is `postgres`, the container is `taskify-postgres`, and the persisted local volume is `postgres_data`.
 
 ### 3. Database Setup
 
@@ -288,11 +290,12 @@ Serve the `dist/` folder with any static web server.
 **Solution**:
 
 ```bash
-# If using Docker
-docker start taskify-db
+# Start local PostgreSQL
+docker compose up -d postgres
 
-# Or check local PostgreSQL
-psql -U postgres -d taskify
+# Inspect container health and logs
+docker compose ps
+docker compose logs postgres
 ```
 
 ### Issue: Frontend shows blank page

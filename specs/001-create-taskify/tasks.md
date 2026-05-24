@@ -407,13 +407,13 @@
 
 ### Documentation & Developer Experience
 
-- [ ] T198 [P] Create backend API documentation OpenAPI/Swagger spec: `backend/openapi.json` or `backend/docs/api.md`
-- [ ] T199 [P] Create frontend component storybook/documentation: `frontend/docs/components.md`
-- [ ] T200 [P] Create development workflow documentation: `docs/DEVELOPMENT.md` - setup, running tests, debugging
-- [ ] T201 [P] Create deployment guide: `docs/DEPLOYMENT.md` - Docker, environment setup, production checklist
-- [ ] T202 [P] Create troubleshooting guide: `docs/TROUBLESHOOTING.md` - common issues, debug tips
-- [ ] T203 [P] Update root README.md with project overview, quick start, feature summary
-- [ ] T204 Create CONTRIBUTING.md with code style, PR process, commit conventions
+- [x] T198 [P] Create backend API documentation OpenAPI/Swagger spec: `backend/openapi.json` or `backend/docs/api.md`
+- [x] T199 [P] Create frontend component storybook/documentation: `frontend/docs/components.md`
+- [x] T200 [P] Create development workflow documentation: `docs/DEVELOPMENT.md` - setup, running tests, debugging
+- [x] T201 [P] Create deployment guide: `docs/DEPLOYMENT.md` - Docker, environment setup, production checklist
+- [x] T202 [P] Create troubleshooting guide: `docs/TROUBLESHOOTING.md` - common issues, debug tips
+- [x] T203 [P] Update root README.md with project overview, quick start, feature summary
+- [x] T204 Create CONTRIBUTING.md with code style, PR process, commit conventions
 
 ### Performance & Optimization
 

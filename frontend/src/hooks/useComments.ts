@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import api from '../services/api';
 import { ApiResponse } from '../types/api';
 import { Comment, User } from '../types/models';
+import { getErrorMessage, retryRecoverable } from '../utils/errors';
 
 export function useGetComments(taskId?: string) {
   return useQuery<Comment[]>({
@@ -20,10 +21,16 @@ export function useGetComments(taskId?: string) {
 export function useCreateComment(taskId: string, projectId: string) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (payload: { text: string; authorId: string; author?: User }) => {
-      const res = await api.post<ApiResponse<Comment>>(
-        `/tasks/${taskId}/comments`,
-        { text: payload.text, authorId: payload.authorId }
+    mutationFn: async (payload: {
+      text: string;
+      authorId: string;
+      author?: User;
+    }) => {
+      const res = await retryRecoverable(() =>
+        api.post<ApiResponse<Comment>>(`/tasks/${taskId}/comments`, {
+          text: payload.text,
+          authorId: payload.authorId,
+        })
       );
       return res.data.data;
     },
@@ -64,9 +71,11 @@ export function useUpdateComment(taskId: string, projectId: string) {
       text: string;
       currentUserId: string;
     }) => {
-      const res = await api.patch<ApiResponse<Comment>>(
-        `/comments/${payload.commentId}`,
-        { text: payload.text, currentUserId: payload.currentUserId }
+      const res = await retryRecoverable(() =>
+        api.patch<ApiResponse<Comment>>(`/comments/${payload.commentId}`, {
+          text: payload.text,
+          currentUserId: payload.currentUserId,
+        })
       );
       return res.data.data;
     },
@@ -101,10 +110,15 @@ export function useUpdateComment(taskId: string, projectId: string) {
 export function useDeleteComment(taskId: string, projectId: string) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (payload: { commentId: string; currentUserId: string }) => {
-      await api.delete(`/comments/${payload.commentId}`, {
-        data: { currentUserId: payload.currentUserId },
-      });
+    mutationFn: async (payload: {
+      commentId: string;
+      currentUserId: string;
+    }) => {
+      await retryRecoverable(() =>
+        api.delete(`/comments/${payload.commentId}`, {
+          data: { currentUserId: payload.currentUserId },
+        })
+      );
       return payload.commentId;
     },
     onMutate: async ({ commentId }) => {
@@ -124,3 +138,5 @@ export function useDeleteComment(taskId: string, projectId: string) {
     },
   });
 }
+
+export { getErrorMessage };

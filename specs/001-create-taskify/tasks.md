@@ -425,11 +425,11 @@
 
 ### Error Handling & Resilience
 
-- [ ] T210 [P] Implement graceful Socket.IO reconnection handling: `frontend/src/services/socket.ts`
-- [ ] T211 [P] Add network error recovery: `frontend/src/hooks/useTasks.ts`, `useComments.ts`, etc.
-- [ ] T212 [P] Add error boundary for frontend error logging: `frontend/src/components/ErrorBoundary.tsx` (extend from T049)
-- [ ] T213 [P] Add backend circuit breaker for database failures: `backend/src/db/client.ts`
-- [ ] T214 Add user-friendly error messages throughout the app: `frontend/src/utils/errors.ts`
+- [x] T210 [P] Implement graceful Socket.IO reconnection handling: `frontend/src/services/socket.ts`
+- [x] T211 [P] Add network error recovery: `frontend/src/hooks/useTasks.ts`, `useComments.ts`, etc.
+- [x] T212 [P] Add error boundary for frontend error logging: `frontend/src/components/ErrorBoundary.tsx` (extend from T049)
+- [x] T213 [P] Add backend circuit breaker for database failures: `backend/src/db/client.ts`
+- [x] T214 Add user-friendly error messages throughout the app: `frontend/src/utils/errors.ts`
 
 ### Security Review
 

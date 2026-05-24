@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import api from '../services/api';
 import { ApiResponse } from '../types/api';
 import { Task, TaskStatus } from '../types/models';
+import { getErrorMessage, retryRecoverable } from '../utils/errors';
 
 export function useGetTasks(projectId?: string) {
   return useQuery<Task[]>({
@@ -26,9 +27,8 @@ export function useCreateTask(projectId: string) {
       assigneeId?: string | null;
       createdById?: string;
     }) => {
-      const res = await api.post<ApiResponse<Task>>(
-        `/projects/${projectId}/tasks`,
-        payload
+      const res = await retryRecoverable(() =>
+        api.post<ApiResponse<Task>>(`/projects/${projectId}/tasks`, payload)
       );
       return res.data.data;
     },
@@ -67,9 +67,8 @@ export function useUpdateTaskStatus(projectId: string) {
       taskId: string;
       status: TaskStatus;
     }) => {
-      const res = await api.patch<ApiResponse<Task>>(
-        `/tasks/${taskId}/status`,
-        { status }
+      const res = await retryRecoverable(() =>
+        api.patch<ApiResponse<Task>>(`/tasks/${taskId}/status`, { status })
       );
       return res.data.data;
     },
@@ -102,7 +101,9 @@ export function useUpdateTask(projectId: string) {
       assigneeId?: string | null;
       status?: TaskStatus;
     }) => {
-      const res = await api.patch<ApiResponse<Task>>(`/tasks/${taskId}`, payload);
+      const res = await retryRecoverable(() =>
+        api.patch<ApiResponse<Task>>(`/tasks/${taskId}`, payload)
+      );
       return res.data.data;
     },
     onMutate: async ({ taskId, ...payload }) => {
@@ -118,7 +119,7 @@ export function useUpdateTask(projectId: string) {
                     description:
                       payload.description === undefined
                         ? task.description
-                        : payload.description ?? undefined,
+                        : (payload.description ?? undefined),
                     status: payload.status ?? task.status,
                   }
                 : task
@@ -139,7 +140,7 @@ export function useDeleteTask(projectId: string) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (taskId: string) => {
-      await api.delete(`/tasks/${taskId}`);
+      await retryRecoverable(() => api.delete(`/tasks/${taskId}`));
       return taskId;
     },
     onMutate: async (taskId) => {
@@ -157,5 +158,7 @@ export function useDeleteTask(projectId: string) {
     onSettled: () => qc.invalidateQueries({ queryKey: ['tasks', projectId] }),
   });
 }
+
+export { getErrorMessage };
 
 export default useGetTasks;

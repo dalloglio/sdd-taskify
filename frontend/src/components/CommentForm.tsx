@@ -18,7 +18,10 @@ export default function CommentForm({ submitting = false, onSubmit }: Props) {
 
   return (
     <form className="space-y-2" onSubmit={handleSubmit}>
-      <label className="block text-sm font-medium text-gray-700" htmlFor="comment-text">
+      <label
+        className="block text-sm font-medium text-gray-700"
+        htmlFor="comment-text"
+      >
         Add comment
       </label>
       <textarea

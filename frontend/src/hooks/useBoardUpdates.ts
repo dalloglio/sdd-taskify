@@ -38,20 +38,23 @@ export function useBoardUpdates(projectId?: string) {
       setMessage('Task updated');
     },
     'task:moved': (payload: MovePayload) => {
-      queryClient.setQueryData<Task[] | undefined>(['tasks', projectId], (old) =>
-        old
-          ? old.map((task) =>
-              task.id === payload.taskId
-                ? { ...task, status: payload.toStatus }
-                : task
-            )
-          : old
+      queryClient.setQueryData<Task[] | undefined>(
+        ['tasks', projectId],
+        (old) =>
+          old
+            ? old.map((task) =>
+                task.id === payload.taskId
+                  ? { ...task, status: payload.toStatus }
+                  : task
+              )
+            : old
       );
       setMessage('Task moved');
     },
     'task:deleted': (payload: DeletePayload) => {
-      queryClient.setQueryData<Task[] | undefined>(['tasks', projectId], (old) =>
-        old ? old.filter((task) => task.id !== payload.taskId) : old
+      queryClient.setQueryData<Task[] | undefined>(
+        ['tasks', projectId],
+        (old) => (old ? old.filter((task) => task.id !== payload.taskId) : old)
       );
       setMessage('Task deleted');
     },

@@ -27,9 +27,13 @@ export function resetMockApiState() {
 resetMockApiState();
 
 export const handlers = [
-  http.get(`${API_BASE}/users`, () => HttpResponse.json(apiResponse(fixtureUsers))),
+  http.get(`${API_BASE}/users`, () =>
+    HttpResponse.json(apiResponse(fixtureUsers))
+  ),
 
-  http.get(`${API_BASE}/projects`, () => HttpResponse.json(apiResponse(projects))),
+  http.get(`${API_BASE}/projects`, () =>
+    HttpResponse.json(apiResponse(projects))
+  ),
 
   http.post(`${API_BASE}/projects`, async ({ request }) => {
     const body = (await request.json()) as {
@@ -60,55 +64,71 @@ export const handlers = [
     );
   }),
 
-  http.post(`${API_BASE}/projects/:projectId/tasks`, async ({ params, request }) => {
-    const body = (await request.json()) as {
-      title: string;
-      description?: string;
-      assigneeId?: string | null;
-      createdById?: string;
-    };
-    const createdTask: Task = {
-      id: `task-${tasks.length + 1}`,
-      projectId: String(params.projectId),
-      title: body.title,
-      description: body.description,
-      assignee: fixtureUsers.find((user) => user.id === body.assigneeId) ?? null,
-      createdBy: fixtureUsers.find((user) => user.id === body.createdById) ?? null,
-      status: 'to_do',
-      createdAt: '2026-05-07T11:00:00.000Z',
-    };
-    tasks = [createdTask, ...tasks];
-    return HttpResponse.json(apiResponse(createdTask), { status: 201 });
-  }),
+  http.post(
+    `${API_BASE}/projects/:projectId/tasks`,
+    async ({ params, request }) => {
+      const body = (await request.json()) as {
+        title: string;
+        description?: string;
+        assigneeId?: string | null;
+        createdById?: string;
+      };
+      const createdTask: Task = {
+        id: `task-${tasks.length + 1}`,
+        projectId: String(params.projectId),
+        title: body.title,
+        description: body.description,
+        assignee:
+          fixtureUsers.find((user) => user.id === body.assigneeId) ?? null,
+        createdBy:
+          fixtureUsers.find((user) => user.id === body.createdById) ?? null,
+        status: 'to_do',
+        createdAt: '2026-05-07T11:00:00.000Z',
+      };
+      tasks = [createdTask, ...tasks];
+      return HttpResponse.json(apiResponse(createdTask), { status: 201 });
+    }
+  ),
 
-  http.patch(`${API_BASE}/tasks/:taskId/status`, async ({ params, request }) => {
-    const body = (await request.json()) as { status: TaskStatus };
-    const updatedTask = tasks.find((task) => task.id === params.taskId);
-    if (!updatedTask) return HttpResponse.json(apiResponse(null), { status: 404 });
-    updatedTask.status = body.status;
-    return HttpResponse.json(apiResponse(updatedTask));
-  }),
+  http.patch(
+    `${API_BASE}/tasks/:taskId/status`,
+    async ({ params, request }) => {
+      const body = (await request.json()) as { status: TaskStatus };
+      const updatedTask = tasks.find((task) => task.id === params.taskId);
+      if (!updatedTask)
+        return HttpResponse.json(apiResponse(null), { status: 404 });
+      updatedTask.status = body.status;
+      return HttpResponse.json(apiResponse(updatedTask));
+    }
+  ),
 
   http.get(`${API_BASE}/tasks/:taskId/comments`, ({ params }) => {
     return HttpResponse.json(
-      apiResponse(comments.filter((comment) => comment.taskId === params.taskId))
+      apiResponse(
+        comments.filter((comment) => comment.taskId === params.taskId)
+      )
     );
   }),
 
-  http.post(`${API_BASE}/tasks/:taskId/comments`, async ({ params, request }) => {
-    const body = (await request.json()) as { text: string; authorId: string };
-    const task = tasks.find((item) => item.id === params.taskId);
-    const createdComment: Comment = {
-      id: `comment-${comments.length + 1}`,
-      taskId: String(params.taskId),
-      projectId: task?.projectId,
-      text: body.text,
-      author: fixtureUsers.find((user) => user.id === body.authorId) ?? fixtureUsers[0],
-      createdAt: '2026-05-07T12:00:00.000Z',
-    };
-    comments = [...comments, createdComment];
-    return HttpResponse.json(apiResponse(createdComment), { status: 201 });
-  }),
+  http.post(
+    `${API_BASE}/tasks/:taskId/comments`,
+    async ({ params, request }) => {
+      const body = (await request.json()) as { text: string; authorId: string };
+      const task = tasks.find((item) => item.id === params.taskId);
+      const createdComment: Comment = {
+        id: `comment-${comments.length + 1}`,
+        taskId: String(params.taskId),
+        projectId: task?.projectId,
+        text: body.text,
+        author:
+          fixtureUsers.find((user) => user.id === body.authorId) ??
+          fixtureUsers[0],
+        createdAt: '2026-05-07T12:00:00.000Z',
+      };
+      comments = [...comments, createdComment];
+      return HttpResponse.json(apiResponse(createdComment), { status: 201 });
+    }
+  ),
 
   http.patch(`${API_BASE}/comments/:commentId`, async ({ params, request }) => {
     const body = (await request.json()) as { text: string };
@@ -124,5 +144,7 @@ export const handlers = [
     return HttpResponse.json(apiResponse({ id: params.commentId }));
   }),
 
-  http.get(`${API_BASE}/sample-data`, () => HttpResponse.json(apiResponse(fixtureSampleData))),
+  http.get(`${API_BASE}/sample-data`, () =>
+    HttpResponse.json(apiResponse(fixtureSampleData))
+  ),
 ];

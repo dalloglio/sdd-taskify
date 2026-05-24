@@ -25,7 +25,9 @@ export default function TaskForm({
   submitLabel = 'Create Task',
 }: Props) {
   const [title, setTitle] = useState(initialTask?.title ?? '');
-  const [description, setDescription] = useState(initialTask?.description ?? '');
+  const [description, setDescription] = useState(
+    initialTask?.description ?? ''
+  );
   const [assigneeId, setAssigneeId] = useState<string | null>(
     initialTask?.assignee?.id ?? null
   );
@@ -51,7 +53,10 @@ export default function TaskForm({
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
       <div>
-        <label className="block text-sm font-medium text-gray-700" htmlFor="task-title">
+        <label
+          className="block text-sm font-medium text-gray-700"
+          htmlFor="task-title"
+        >
           Title
         </label>
         <input
@@ -80,10 +85,17 @@ export default function TaskForm({
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700" htmlFor="assignee">
+        <label
+          className="block text-sm font-medium text-gray-700"
+          htmlFor="assignee"
+        >
           Assignee
         </label>
-        <AssigneeSelector members={members} value={assigneeId} onChange={setAssigneeId} />
+        <AssigneeSelector
+          members={members}
+          value={assigneeId}
+          onChange={setAssigneeId}
+        />
       </div>
 
       {error && <p className="text-sm text-red-600">{error}</p>}

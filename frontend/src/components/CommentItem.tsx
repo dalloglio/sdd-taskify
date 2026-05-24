@@ -26,7 +26,9 @@ export default function CommentItem({
   onUpdate,
 }: Props) {
   const [editing, setEditing] = useState(false);
-  const canModify = Boolean(currentUser && currentUser.id === comment.author.id);
+  const canModify = Boolean(
+    currentUser && currentUser.id === comment.author.id
+  );
 
   return (
     <article className="rounded-md bg-gray-50 p-3 text-gray-900">

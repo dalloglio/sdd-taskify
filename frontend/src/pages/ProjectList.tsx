@@ -39,7 +39,9 @@ export default function ProjectList() {
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className="space-y-4 rounded-md bg-white p-4">
-          <h2 className="text-lg font-semibold text-gray-900">Create Project</h2>
+          <h2 className="text-lg font-semibold text-gray-900">
+            Create Project
+          </h2>
           <ProjectForm
             onSubmit={async (values) => {
               await createMutation.mutateAsync(values);

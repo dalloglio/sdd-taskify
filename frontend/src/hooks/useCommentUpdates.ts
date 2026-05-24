@@ -38,8 +38,10 @@ export function useCommentUpdates(projectId?: string, taskId?: string) {
     },
     'comment:deleted': (payload: DeletePayload) => {
       if (payload.taskId !== taskId) return;
-      queryClient.setQueryData<Comment[] | undefined>(['comments', taskId], (old) =>
-        old ? old.filter((comment) => comment.id !== payload.commentId) : old
+      queryClient.setQueryData<Comment[] | undefined>(
+        ['comments', taskId],
+        (old) =>
+          old ? old.filter((comment) => comment.id !== payload.commentId) : old
       );
       queryClient.invalidateQueries({ queryKey: ['tasks', projectId] });
       setMessage('Comment deleted');

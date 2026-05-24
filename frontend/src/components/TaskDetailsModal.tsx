@@ -51,7 +51,9 @@ export default function TaskDetailsModal({
             task={task}
             members={members}
             onStatusChange={(status) => onStatusChange(task, status)}
-            onAssigneeChange={(assigneeId) => onAssigneeChange(task, assigneeId)}
+            onAssigneeChange={(assigneeId) =>
+              onAssigneeChange(task, assigneeId)
+            }
             onEdit={onEdit}
             onDelete={() => onDelete(task)}
           />

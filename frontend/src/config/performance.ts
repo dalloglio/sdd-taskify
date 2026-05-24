@@ -19,11 +19,17 @@ function publish(metric: PerformanceMetric) {
   }
 }
 
-function ratingFor(value: number, threshold: number): PerformanceMetric['rating'] {
+function ratingFor(
+  value: number,
+  threshold: number
+): PerformanceMetric['rating'] {
   return value <= threshold ? 'good' : 'needs-improvement';
 }
 
-export function reportPerformanceMetric(metric: Omit<PerformanceMetric, 'rating'>, threshold: number) {
+export function reportPerformanceMetric(
+  metric: Omit<PerformanceMetric, 'rating'>,
+  threshold: number
+) {
   publish({
     ...metric,
     rating: ratingFor(metric.value, threshold),
@@ -38,7 +44,11 @@ export function subscribeToPerformanceMetrics(
 }
 
 export function initPerformanceMonitoring() {
-  if (initialized || typeof window === 'undefined' || !('PerformanceObserver' in window)) {
+  if (
+    initialized ||
+    typeof window === 'undefined' ||
+    !('PerformanceObserver' in window)
+  ) {
     return;
   }
 

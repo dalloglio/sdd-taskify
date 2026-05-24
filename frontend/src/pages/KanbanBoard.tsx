@@ -1,4 +1,9 @@
-import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
+import {
+  DndContext,
+  DragEndEvent,
+  DragOverlay,
+  DragStartEvent,
+} from '@dnd-kit/core';
 import { useMemo, useState } from 'react';
 import CreateTaskModal from '../components/CreateTaskModal';
 import DeleteConfirmation from '../components/DeleteConfirmation';
@@ -138,7 +143,9 @@ export default function KanbanBoard({ project }: Props) {
       )}
 
       {isLoading ? (
-        <div className="rounded-md bg-white p-4 text-gray-700">Loading tasks...</div>
+        <div className="rounded-md bg-white p-4 text-gray-700">
+          Loading tasks...
+        </div>
       ) : (
         <DndContext
           sensors={sensors}

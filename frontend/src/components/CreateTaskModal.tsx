@@ -10,7 +10,12 @@ type Props = {
   onSubmit: (values: TaskFormValues) => Promise<void> | void;
 };
 
-export default function CreateTaskModal({ open, members, onClose, onSubmit }: Props) {
+export default function CreateTaskModal({
+  open,
+  members,
+  onClose,
+  onSubmit,
+}: Props) {
   return (
     <Modal open={open} onClose={onClose}>
       <div className="space-y-4 rounded-md bg-white p-4">

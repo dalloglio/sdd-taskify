@@ -32,14 +32,19 @@ export default function TaskDetails({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="detail-status">
+          <label
+            className="block text-sm font-medium text-gray-700"
+            htmlFor="detail-status"
+          >
             Status
           </label>
           <select
             id="detail-status"
             className="input w-full bg-white text-gray-900 border-gray-300"
             value={task.status}
-            onChange={(event) => onStatusChange(event.target.value as TaskStatus)}
+            onChange={(event) =>
+              onStatusChange(event.target.value as TaskStatus)
+            }
           >
             {KANBAN_COLUMNS.map((column) => (
               <option key={column.id} value={column.id}>
@@ -49,7 +54,10 @@ export default function TaskDetails({
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="detail-assignee">
+          <label
+            className="block text-sm font-medium text-gray-700"
+            htmlFor="detail-assignee"
+          >
             Assignee
           </label>
           <AssigneeSelector

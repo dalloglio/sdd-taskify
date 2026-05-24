@@ -24,7 +24,9 @@ export default function TaskCard({
   onStatusChange,
 }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const isCurrentUserTask = Boolean(task.assignee?.id && task.assignee.id === currentUser?.id);
+  const isCurrentUserTask = Boolean(
+    task.assignee?.id && task.assignee.id === currentUser?.id
+  );
   const {
     attributes,
     listeners,
@@ -65,9 +67,13 @@ export default function TaskCard({
           {...attributes}
           aria-label={`Drag ${task.title}`}
         >
-          <h4 className="truncate text-base font-bold text-gray-900">{task.title}</h4>
+          <h4 className="truncate text-base font-bold text-gray-900">
+            {task.title}
+          </h4>
           {task.description && (
-            <p className="mt-1 line-clamp-2 text-sm text-gray-600">{task.description}</p>
+            <p className="mt-1 line-clamp-2 text-sm text-gray-600">
+              {task.description}
+            </p>
           )}
         </button>
         <button
@@ -88,7 +94,9 @@ export default function TaskCard({
           <div className="flex min-w-0 items-center gap-2">
             <UserAvatar user={task.assignee} size={24} />
             <div className="min-w-0">
-              <p className="truncate text-sm text-gray-800">{task.assignee.name}</p>
+              <p className="truncate text-sm text-gray-800">
+                {task.assignee.name}
+              </p>
               {task.assignee.role && (
                 <p className="text-xs capitalize text-gray-500">
                   {task.assignee.role.replace('_', ' ')}
@@ -99,7 +107,9 @@ export default function TaskCard({
         ) : (
           <p className="text-sm italic text-gray-500">Unassigned</p>
         )}
-        <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badgeClass}`}>
+        <span
+          className={`shrink-0 rounded-full px-2 py-1 text-xs font-medium ${badgeClass}`}
+        >
           {getStatusLabel(task.status)}
         </span>
       </div>

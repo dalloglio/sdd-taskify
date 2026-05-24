@@ -62,7 +62,11 @@ export default function TaskColumn({
           <div className="rounded-md border border-dashed border-gray-300 p-4 text-center text-sm text-gray-600">
             <p>No tasks in this column</p>
             {status === 'to_do' && (
-              <button className="mt-2 font-medium text-blue-700" type="button" onClick={onCreateTask}>
+              <button
+                className="mt-2 font-medium text-blue-700"
+                type="button"
+                onClick={onCreateTask}
+              >
                 Create the first task
               </button>
             )}

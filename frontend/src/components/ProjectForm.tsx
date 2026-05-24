@@ -31,7 +31,10 @@ export default function ProjectForm({
       className="space-y-3 text-gray-900"
     >
       <div>
-        <label className="block text-sm mb-1 font-medium text-gray-700" htmlFor={nameId}>
+        <label
+          className="block text-sm mb-1 font-medium text-gray-700"
+          htmlFor={nameId}
+        >
           Name
         </label>
         <input
@@ -43,7 +46,10 @@ export default function ProjectForm({
         />
       </div>
       <div>
-        <label className="block text-sm mb-1 font-medium text-gray-700" htmlFor={descriptionId}>
+        <label
+          className="block text-sm mb-1 font-medium text-gray-700"
+          htmlFor={descriptionId}
+        >
           Description
         </label>
         <textarea
@@ -54,7 +60,9 @@ export default function ProjectForm({
         />
       </div>
       <div>
-        <label className="block text-sm mb-1 font-medium text-gray-700">Team Members</label>
+        <label className="block text-sm mb-1 font-medium text-gray-700">
+          Team Members
+        </label>
         <TeamMemberSelector value={memberIds} onChange={setMemberIds} />
       </div>
       <div className="flex justify-end gap-2">

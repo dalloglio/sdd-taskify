@@ -1,8 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import ProjectDetails from './pages/ProjectDetails';
-import ProjectList from './pages/ProjectList';
-import UserSelector from './pages/UserSelector';
+
+const ProjectDetails = lazy(() => import('./pages/ProjectDetails'));
+const ProjectList = lazy(() => import('./pages/ProjectList'));
+const UserSelector = lazy(() => import('./pages/UserSelector'));
 
 export default function App() {
   return (
@@ -12,12 +14,14 @@ export default function App() {
           <Link to="/user-select">Select User</Link>
           <Link to="/projects">Projects</Link>
         </nav>
-        <Routes>
-          <Route path="/" element={<Navigate to="/projects" replace />} />
-          <Route path="/user-select" element={<UserSelector />} />
-          <Route path="/projects" element={<ProjectList />} />
-          <Route path="/projects/:projectId" element={<ProjectDetails />} />
-        </Routes>
+        <Suspense fallback={<div className="rounded-md bg-white p-4 text-gray-700">Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/projects" replace />} />
+            <Route path="/user-select" element={<UserSelector />} />
+            <Route path="/projects" element={<ProjectList />} />
+            <Route path="/projects/:projectId" element={<ProjectDetails />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </BrowserRouter>
   );

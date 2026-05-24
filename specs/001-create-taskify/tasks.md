@@ -417,11 +417,11 @@
 
 ### Performance & Optimization
 
-- [ ] T205 [P] Optimize frontend bundle size: tree-shaking, code splitting: `frontend/vite.config.ts`
-- [ ] T206 [P] Add frontend performance monitoring: `frontend/src/config/performance.ts`
-- [ ] T207 [P] Optimize database queries with proper indexing (already in schema): verify in `backend/prisma/schema.prisma`
-- [ ] T208 [P] Add caching headers to static assets: `backend/src/index.ts` middleware
-- [ ] T209 [P] Implement request throttling/rate limiting: `backend/src/middleware/rateLimit.ts`
+- [x] T205 [P] Optimize frontend bundle size: tree-shaking, code splitting: `frontend/vite.config.ts`
+- [x] T206 [P] Add frontend performance monitoring: `frontend/src/config/performance.ts`
+- [x] T207 [P] Optimize database queries with proper indexing (already in schema): verify in `backend/prisma/schema.prisma`
+- [x] T208 [P] Add caching headers to static assets: `backend/src/index.ts` middleware
+- [x] T209 [P] Implement request throttling/rate limiting: `backend/src/middleware/rateLimit.ts`
 
 ### Error Handling & Resilience
 

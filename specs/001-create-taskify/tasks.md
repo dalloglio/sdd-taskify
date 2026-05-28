@@ -441,10 +441,10 @@
 
 ### Docker & Containerization (Optional for MVP)
 
-- [ ] T220 [P] Create Dockerfile for backend: `backend/Dockerfile`
-- [ ] T221 [P] Create Dockerfile for frontend: `frontend/Dockerfile`
-- [ ] T222 [P] Create docker-compose.yml for local development: `docker-compose.yml` with backend, frontend, PostgreSQL
-- [ ] T223 Build and test Docker images locally: `docker-compose up --build`
+- [x] T220 [P] Create Dockerfile for backend: `backend/Dockerfile`
+- [x] T221 [P] Create Dockerfile for frontend: `frontend/Dockerfile`
+- [x] T222 [P] Create docker-compose.yml for local development: `docker-compose.yml` with backend, frontend, PostgreSQL
+- [x] T223 Build and test Docker images locally: `docker-compose up --build`
 
 ### Production Deployment Setup (Optional for MVP)
 

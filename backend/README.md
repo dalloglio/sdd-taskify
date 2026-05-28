@@ -4,6 +4,24 @@ Backend API for the Taskify application.
 
 ## Setup
 
+### Docker Compose
+
+From the repository root, run the full local stack:
+
+```bash
+docker compose up --build
+```
+
+This starts PostgreSQL, the backend API on `http://localhost:3000`, and the frontend on `http://localhost:5173`.
+
+For a fresh database volume, seed the demo workspace from another terminal after the backend is healthy:
+
+```bash
+docker compose exec backend npx prisma db seed
+```
+
+### Local npm
+
 1. Install dependencies:
 
    ```bash
@@ -25,6 +43,7 @@ Backend API for the Taskify application.
    ```
 
 4. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -41,3 +60,5 @@ Backend API for the Taskify application.
 ## API Documentation
 
 See the contracts in `/specs/001-create-taskify/contracts/` for API details.
+
+See `docs/api.md` for implemented endpoint details.

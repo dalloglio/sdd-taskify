@@ -25,6 +25,12 @@ If PostgreSQL is stopped:
 docker compose up -d postgres
 ```
 
+If you are running the full Compose stack, inspect the backend service logs:
+
+```sh
+docker compose logs -f backend
+```
+
 ## Prisma Seed Fails
 
 Confirm the target database exists and migrations have run.
@@ -34,6 +40,12 @@ docker compose up -d postgres
 cd backend
 npx prisma migrate dev
 npx prisma db seed
+```
+
+In the full Compose stack, run the seed inside the backend container:
+
+```sh
+docker compose exec backend npx prisma db seed
 ```
 
 If duplicate sample data appears, inspect `backend/prisma/seed.ts` before clearing records.
@@ -48,6 +60,12 @@ VITE_WEBSOCKET_URL=http://localhost:3000
 ```
 
 Restart Vite after changing environment files.
+
+If the frontend is running in Compose, rebuild so build-time Vite variables are applied:
+
+```sh
+docker compose up --build frontend
+```
 
 ## CORS Errors
 
@@ -75,6 +93,36 @@ docker compose up -d postgres
 ```
 
 This deletes the local `postgres_data` volume. Run migrations and seed again after recreating it.
+
+## Docker Compose Backend Is Unhealthy
+
+Check whether migrations completed and the backend health endpoint responds:
+
+```sh
+docker compose logs backend
+curl http://localhost:3000/health
+```
+
+The backend service runs `npx prisma migrate deploy && npm run dev` in Compose. If migrations fail, fix the database state first, then restart the backend:
+
+```sh
+docker compose restart backend
+```
+
+## Docker Compose Frontend Is Unhealthy
+
+The frontend health check expects the Vite dev server on port 5173.
+
+```sh
+docker compose logs frontend
+curl http://localhost:5173/
+```
+
+If environment values changed, rebuild the frontend image:
+
+```sh
+docker compose up --build frontend
+```
 
 ## Tasks Do Not Move Between Columns
 

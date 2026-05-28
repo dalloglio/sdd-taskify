@@ -20,7 +20,21 @@ Taskify is a team productivity MVP for creating projects, assigning predefined t
 
 ## Quick Start
 
-Install dependencies:
+Run the full local stack with Docker Compose:
+
+```sh
+docker compose up --build
+```
+
+This starts PostgreSQL, the backend API, and the frontend. Open `http://localhost:5173`.
+
+For a fresh database volume, seed the demo workspace from another terminal after the backend is healthy:
+
+```sh
+docker compose exec backend npx prisma db seed
+```
+
+For npm-based development, install dependencies:
 
 ```sh
 cd backend
@@ -36,7 +50,7 @@ cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
 ```
 
-Start PostgreSQL with Docker Compose:
+Start PostgreSQL only:
 
 ```sh
 docker compose up -d postgres
@@ -74,12 +88,13 @@ Open `http://localhost:5173`.
 
 ## Useful Commands
 
-Database:
+Docker Compose:
 
 ```sh
+docker compose up --build
 docker compose up -d postgres
 docker compose ps
-docker compose logs postgres
+docker compose logs -f backend frontend postgres
 docker compose down
 ```
 

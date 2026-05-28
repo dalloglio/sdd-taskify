@@ -47,7 +47,21 @@ Required values:
 
 ## Database
 
-Start PostgreSQL through Docker Compose from the repository root:
+For the fastest full-stack local run, start all services through Docker Compose from the repository root:
+
+```sh
+docker compose up --build
+```
+
+This starts PostgreSQL, the backend API, and the Vite dev server. The frontend is available at `http://localhost:5173`.
+
+For a fresh database volume, seed the demo workspace from another terminal after the backend is healthy:
+
+```sh
+docker compose exec backend npx prisma db seed
+```
+
+For npm-based development, start only PostgreSQL through Docker Compose:
 
 ```sh
 docker compose up -d postgres
@@ -73,6 +87,10 @@ The seed creates five users and three sample projects with demo tasks and commen
 
 ## Run Locally
 
+If you started the full Compose stack with `docker compose up --build`, the backend and frontend are already running in containers.
+
+For local npm processes against the Compose database, run each service separately.
+
 Backend:
 
 ```sh
@@ -96,14 +114,15 @@ Default URLs:
 
 ## Docker Compose
 
-The current Compose setup intentionally runs PostgreSQL only. Backend and frontend still run with npm during local development.
+The Compose setup includes PostgreSQL, backend, and frontend services. Backend and frontend use development targets with bind mounts, so source changes are reflected through the existing dev servers.
 
 Useful commands:
 
 ```sh
+docker compose up --build
 docker compose up -d postgres
 docker compose ps
-docker compose logs postgres
+docker compose logs -f backend frontend postgres
 docker compose down
 ```
 
@@ -113,6 +132,13 @@ To delete local database data and recreate the volume:
 docker compose down -v
 docker compose up -d postgres
 ```
+
+Service URLs in the full Compose stack:
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3000`
+- Backend health: `http://localhost:3000/health`
+- PostgreSQL: `localhost:5432`
 
 ## Checks
 

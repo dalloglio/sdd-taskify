@@ -1,12 +1,35 @@
 # Deployment Guide
 
-This guide covers the production shape for Taskify's MVP. The current `docker-compose.yml` provides local PostgreSQL only; application Dockerfiles are planned separately.
+This guide covers the production shape for Taskify's MVP. The repository includes Dockerfiles for the backend and frontend plus a local `docker-compose.yml` that runs PostgreSQL, backend, and frontend for development.
 
 ## Services
 
 - Backend: Node.js 20 Express API with Socket.IO.
-- Frontend: Vite-built static React app.
+- Frontend: Vite-built static React app served by Nginx in the production container.
 - Database: PostgreSQL 16 locally through Docker Compose; managed PostgreSQL is recommended for production.
+
+## Local Full-Stack Compose
+
+Run the full local stack from the repository root:
+
+```sh
+docker compose up --build
+```
+
+Default local URLs:
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3000`
+- Backend health: `http://localhost:3000/health`
+- PostgreSQL: `localhost:5432`
+
+The compose file uses development image targets for backend and frontend, bind mounts source directories, and stores dependencies in named volumes.
+
+For a fresh local database volume, seed the demo workspace after the backend is healthy:
+
+```sh
+docker compose exec backend npx prisma db seed
+```
 
 ## Backend Environment
 
@@ -24,9 +47,9 @@ Production rules:
 - Run Prisma migrations before starting the new backend version.
 - Do not reuse the local Compose password in production.
 
-## Local Compose Database
+## Local Compose Database Only
 
-The local Compose stack starts only PostgreSQL:
+To run backend and frontend with local npm processes, start only PostgreSQL:
 
 ```sh
 docker compose up -d postgres
@@ -57,6 +80,14 @@ npm run build
 
 Deploy the generated `frontend/dist` directory to the static host or CDN.
 
+Container build:
+
+```sh
+docker build -t taskify-frontend --target runner frontend
+```
+
+The production image serves the Vite build with Nginx on port 80 and exposes `/health`.
+
 ## Backend Build
 
 ```sh
@@ -70,6 +101,12 @@ Start:
 
 ```sh
 npm start
+```
+
+Container build:
+
+```sh
+docker build -t taskify-backend --target runner backend
 ```
 
 ## Database Release Steps

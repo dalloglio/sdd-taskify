@@ -109,6 +109,22 @@ Container build:
 docker build -t taskify-backend --target runner backend
 ```
 
+## Container Registry
+
+The CI workflow builds and publishes Docker images to GitHub Container Registry on push. It does not deploy them.
+
+Published image names:
+
+- `ghcr.io/<owner>/<repo>-backend`
+- `ghcr.io/<owner>/<repo>-frontend`
+
+Tags:
+
+- Branch tag, such as `main`
+- Commit SHA tag
+
+The workflow uses the repository `GITHUB_TOKEN` with `packages: write`; no extra registry secret is required for GHCR in the same GitHub repository.
+
 ## Database Release Steps
 
 1. Back up the production database.

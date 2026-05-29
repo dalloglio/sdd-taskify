@@ -448,9 +448,9 @@
 
 ### Production Deployment Setup (Optional for MVP)
 
-- [ ] T224 [P] Create .github/workflows/test.yml for CI/CD testing: runs on PR/push
+- [x] T224 [P] Create .github/workflows/test.yml for CI/CD testing: runs on PR/push
 - [ ] T225 [P] Create .github/workflows/deploy.yml for production deployment: triggered on main branch merge
-- [ ] T226 [P] Setup environment-specific configs (.env.development, .env.production): `backend/.env.example, frontend/.env.example`
+- [x] T226 [P] Setup environment-specific configs (.env.development, .env.production): `backend/.env.example, frontend/.env.example` (scoped to example-based configuration; no `.env.production` per current non-deploy constraint)
 - [ ] T227 [P] Create deployment validation checklist: `docs/DEPLOYMENT_CHECKLIST.md`
 
 ### Final Integration & Smoke Tests
